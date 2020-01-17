@@ -7,14 +7,18 @@
     <meta name="description" content="Invoice Generator">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
+    <!-- Main CSS file -->
+    <link rel="stylesheet" href="css/styles.css">
+
     <title>Invoice Generator</title>
 </head>
 <body>
-    <!-- Form -->
+    <!-- Invoice Form -->
     <form>
+
         <h1>Invoice</h1>
 
-        <div>
+        <div class="tab">
             <h5>Bill To</h5>
             <input type="text" id="nameTxt" placeholder="Name">
             <input type="text" id="phoneTxt" placeholder="Phone Number">
@@ -25,25 +29,28 @@
             <input type="text" id="zipCodeTxt" placeholder="Zip Code">
         </div>
         
-        <div>
+        <div class="tab">
             <h5>Items</h5>
             <input type="text" id="itemDescTxt" placeholder="Description">
             <input type="text" id="itemAmounttTxt" placeholder="Amount">
             <button>Add Item</button>
         </div>
         
-        <div>
+        <div class="tab">
             <h5>Payment Method</h5>
             <input type="radio" name="payment" value="bdo"> BDO<br>
             <input type="radio" name="payment" value="bpi"> BPI<br>
             <input type="radio" name="payment" value="gcash"> GCash<br>
             <input type="radio" name="payment" value="cebuana"> Cebuana<br>
             <input type="radio" name="payment" value="palawan"> Palawan Express<br>
-        </div>
+        </div class="tab">
 
         <div>
             <button>Submit</button>
         </div>
     </form>
+    
+    <!-- JS -->
+    <script src="js/app.js"></script>
 </body>
 </html>
