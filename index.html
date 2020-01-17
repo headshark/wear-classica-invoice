@@ -1,9 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Meta -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Invoice Generator">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <title>Invoice Generator</title>
 </head>
 <body>
+    <!-- Form -->
+    <form>
+        <h1>Invoice</h1>
+
+        <div>
+            <h5>Bill To</h5>
+            <input type="text" id="nameTxt" placeholder="Name">
+            <input type="text" id="phoneTxt" placeholder="Phone Number">
+            <input type="text" id="streetTxt" placeholder="Street and number, P.O. box, c/o">
+            <input type="text" id="unitTxt" placeholder="Apartment, suite, unit, building, floor, etc.">
+            <input type="text" id="cityTxt" placeholder="City">
+            <input type="text" id="provinceTxt" placeholder="Province">
+            <input type="text" id="zipCodeTxt" placeholder="Zip Code">
+        </div>
+        
+        <div>
+            <h5>Items</h5>
+            <input type="text" id="itemDescTxt" placeholder="Description">
+            <input type="text" id="itemAmounttTxt" placeholder="Amount">
+            <button>Add Item</button>
+        </div>
+        
+        <div>
+            <h5>Payment Method</h5>
+            <input type="radio" name="payment" value="bdo"> BDO<br>
+            <input type="radio" name="payment" value="bpi"> BPI<br>
+            <input type="radio" name="payment" value="gcash"> GCash<br>
+            <input type="radio" name="payment" value="cebuana"> Cebuana<br>
+            <input type="radio" name="payment" value="palawan"> Palawan Express<br>
+        </div>
+
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
 </body>
 </html>
