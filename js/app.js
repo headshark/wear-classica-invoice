@@ -29,3 +29,15 @@ nextPrev = (n) => {
     
     showTab(currentTab);
 }
+
+addItem = () => {
+    let itemTable = document.getElementById('itemTable');
+    let itemDesc = document.getElementById('itemDescTxt');
+    let itemAmount = document.getElementById('itemAmountTxt');
+    let row = itemTable.insertRow(itemTable.rows.length);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    
+    cell1.innerHTML = itemDesc.value;
+    cell2.innerHTML = itemAmount.value;
+}
