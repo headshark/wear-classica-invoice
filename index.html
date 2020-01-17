@@ -15,9 +15,9 @@
 <body>
     <!-- Invoice Form -->
     <form>
-
         <h1>Invoice</h1>
 
+        <!-- Bill To -->
         <div class="tab">
             <h5>Bill To</h5>
             <input type="text" id="nameTxt" placeholder="Name">
@@ -29,6 +29,7 @@
             <input type="text" id="zipCodeTxt" placeholder="Zip Code">
         </div>
         
+        <!-- Items -->
         <div class="tab">
             <h5>Items</h5>
             <input type="text" id="itemDescTxt" placeholder="Description">
@@ -36,6 +37,7 @@
             <button>Add Item</button>
         </div>
         
+        <!-- Payment Method -->
         <div class="tab">
             <h5>Payment Method</h5>
             <input type="radio" name="payment" value="bdo"> BDO<br>
@@ -45,8 +47,10 @@
             <input type="radio" name="payment" value="palawan"> Palawan Express<br>
         </div class="tab">
 
+        <!-- Buttons -->
         <div>
-            <button>Submit</button>
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
         </div>
     </form>
     
