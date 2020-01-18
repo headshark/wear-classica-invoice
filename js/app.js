@@ -1,6 +1,22 @@
 let currentTab = 0;
 let totalAmount = 0;
 let items = [];
+const provinces = [
+    'Abra', 'Agusan del Norte', 'Aklan', 'Albay', 'Antique', 'Apayao', 'Aurora',
+    'Basilan', 'Bataan', 'Batanes', 'Benguet', 'Biliran', 'Bukidnon', 'Bulacan',
+    'Cagayan', 'Camarines Norte', 'Camarines Sur', 'Camiguin', 'Capiz', 'Catanduanes',
+    'Cavite', 'Cebu', 'Compostela Valley', 'Davao del Norte', 'Davao del Sur',
+    'Davao Oriental', 'Dinagat Islands', 'Eastern Samar', 'Guimaras', 'Ifugao',
+    'Ilocos Norte', 'Ilocos Sur', 'Iloilo', 'Isabela', 'Kalinga', 'La Union',
+    'Laguna', 'Lanao del Norte', 'Lanao del Sur', 'Leyte', 'Maguindanao', 'Marinduque',
+    'Masbate', 'Metro Manila', 'Misamis Occidental', 'Misamis Oriental', 'Mountain Province',
+    'Negros Occidental', 'Negros Oriental', 'North Coabato', 'Northern Samar', 'Nueva Ecija',
+    'Nueva Vizcaya', 'Occidental Mindoro', 'Oriental Mindoro', 'Palawan', 'Pampanga',
+    'Pangasinan', 'Quezon', 'Quirino', 'Rizal', 'Romblon', 'Samar', 'Sarangani', 'Shariff Kabunsuan',
+    'Siquijor', 'Sorsogon', 'South Cotabato', 'Southern Leyte', 'Sultan Kudarat', 'Sulu',
+    'Surigao del Norte', 'Surigao del Sur', 'Tarlac', 'Tawi-Tawi', 'Zambales', 'Zamboanga del Norte',
+    'Zamboanga del Sur', 'Zamboanga Sibugay'
+];
 const user = {
     name: 'Soniella Therese Yumang',
     phone: '+63 977 105 9115',
@@ -16,8 +32,17 @@ const paymentMethod = {
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    showTab(currentTab); 
+    populateDataList();
+    showTab(currentTab);
 });
+
+populateDataList = () => {
+    let options = '';
+    for (let i = 0; i < provinces.length; i++)
+        options += '<option value="' + provinces[i] + '" />';
+        
+    document.getElementById('provinceDataList').innerHTML = options;
+}
 
 showTab = (n) => {
     let tab = document.querySelectorAll('.tab');
@@ -81,12 +106,12 @@ addItem = () => {
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     
+    updateTotalAmount(itemAmount.value);
     cell1.innerHTML = itemDesc.value;
     cell2.innerHTML = itemAmount.value;
     item.description = itemDesc.value;
     item.amount = itemAmount.value;
     items.push(item);
-    updateTotalAmount(itemAmount.value);
 
     // reset input
     itemDesc.value = '';
