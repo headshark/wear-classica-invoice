@@ -41,6 +41,7 @@ showTab = (n) => {
 
         document.getElementById('customerDetails').innerHTML = document.getElementById('nameTxt').value;
         document.getElementById('itemDetails').innerHTML = html;
+        document.getElementById('shippingDetails').innerHTML = document.getElementById('shippingFeeTxt').value;
         document.getElementById('paymentDetails').innerHTML = paymentDetails;
         
     } else {
