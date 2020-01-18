@@ -34,16 +34,17 @@ let prevBtn = document.getElementById('prevBtn');
 let nextBtn = document.getElementById('nextBtn');
 let addItemBtn = document.getElementById('addItemBtn');
 let shippingFeeTxt = document.getElementById('shippingFeeTxt');
+let tab = document.querySelectorAll('.tab');
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    populateDataList();
+    populateProvinceDatalist();
     showTab(currentTab);
-});
-prevBtn.addEventListener('click', () => {
-    nextPrev(-1);
 });
 nextBtn.addEventListener('click', () => {
     nextPrev(1);
+});
+prevBtn.addEventListener('click', () => {
+    nextPrev(-1);
 });
 addItemBtn.addEventListener('click', () => {
     addItem();
@@ -52,26 +53,25 @@ shippingFeeTxt.addEventListener('change', () => {
     updateTotalAmount(shippingFeeTxt.value);
 });
 
-populateDataList = () => {
+populateProvinceDatalist = () => {
     let options = '';
     for (let i = 0; i < provinces.length; i++)
         options += '<option value="' + provinces[i] + '" />';
         
-    document.getElementById('provinceDataList').innerHTML = options;
+    document.getElementById('provinceDatalist').innerHTML = options;
 }
 
 showTab = (n) => {
-    let tab = document.querySelectorAll('.tab');
     tab[n].style.display = 'block';
     
     if (n === 0) {
-        document.getElementById('prevBtn').style.display = 'none';
+        prevBtn.style.display = 'none';
     } else {
-        document.getElementById('prevBtn').style.display = 'inline';
+        prevBtn.style.display = 'inline';
     }
 
-    if (n == (tab.length - 1)) {
-        document.getElementById('nextBtn').innerHTML = 'Submit';
+    if (n === (tab.length - 1)) {
+        nextBtn.innerHTML = 'Submit';
 
         let html = '<table>';
         for (let i = 0; i < items.length; i++) {
@@ -98,15 +98,12 @@ showTab = (n) => {
         document.getElementById('itemDetails').innerHTML = html;
         document.getElementById('shippingDetails').innerHTML = document.getElementById('shippingFeeTxt').value;
         document.getElementById('paymentDetails').innerHTML = paymentDetails;
-        
     } else {
-        document.getElementById('nextBtn').innerHTML = 'Next';
+        nextBtn.innerHTML = 'Next';
     }
 }
 
-nextPrev = (n) => {
-    let tab = document.querySelectorAll('.tab');
-    
+nextPrev = (n) => { 
     tab[currentTab].style.display = "none";
     currentTab = currentTab + n;
     
@@ -116,22 +113,22 @@ nextPrev = (n) => {
 addItem = () => {
     let item = {};
     let itemTable = document.getElementById('itemTable');
-    let itemDesc = document.getElementById('itemDescTxt');
-    let itemAmount = document.getElementById('itemAmountTxt');
+    let itemDescTxt = document.getElementById('itemDescTxt');
+    let itemAmountTxt = document.getElementById('itemAmountTxt');
     let row = itemTable.insertRow(itemTable.rows.length);
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     
-    updateTotalAmount(itemAmount.value);
-    cell1.innerHTML = itemDesc.value;
-    cell2.innerHTML = itemAmount.value;
-    item.description = itemDesc.value;
-    item.amount = itemAmount.value;
+    updateTotalAmount(itemAmountTxt.value);
+    cell1.innerHTML = itemDescTxt.value;
+    cell2.innerHTML = itemAmountTxt.value;
+    item.description = itemDescTxt.value;
+    item.amount = itemAmountTxt.value;
     items.push(item);
 
     // reset input
-    itemDesc.value = '';
-    itemAmount.value = '';
+    itemDescTxt.value = '';
+    itemAmountTxt.value = '';
 }
 
 updateTotalAmount = (n) => {
