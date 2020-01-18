@@ -1,4 +1,5 @@
 let currentTab = 0;
+let items = [];
 
 document.addEventListener('DOMContentLoaded', (event) => {
     showTab(currentTab); 
@@ -16,6 +17,32 @@ showTab = (n) => {
 
     if (n == (tab.length - 1)) {
         document.getElementById('nextBtn').innerHTML = 'Submit';
+
+        let html = '<table>';
+        for (let i = 0; i < items.length; i++) {
+            let item = items[i];
+            
+            html += '<tr>';
+            html += '<td>' + item.description + '</td>';
+            html += '<td>' + item.amount + '</td>';
+            html += '</tr>';
+        }
+        html += '</table>';
+
+        let paymentDetails = '';
+        let paymentMethod = document.getElementsByName('payment');
+        for (let i = 0; i < paymentMethod.length; i++) {
+            if (paymentMethod[i].checked) {
+                paymentDetails = paymentMethod[i].value;
+
+                break;
+            }
+        }
+
+        document.getElementById('customerDetails').innerHTML = document.getElementById('nameTxt').value;
+        document.getElementById('itemDetails').innerHTML = html;
+        document.getElementById('paymentDetails').innerHTML = paymentDetails;
+        
     } else {
         document.getElementById('nextBtn').innerHTML = 'Next';
     }
@@ -31,6 +58,7 @@ nextPrev = (n) => {
 }
 
 addItem = () => {
+    let item = {};
     let itemTable = document.getElementById('itemTable');
     let itemDesc = document.getElementById('itemDescTxt');
     let itemAmount = document.getElementById('itemAmountTxt');
@@ -40,4 +68,11 @@ addItem = () => {
     
     cell1.innerHTML = itemDesc.value;
     cell2.innerHTML = itemAmount.value;
+    item.description = itemDesc.value;
+    item.amount = itemAmount.value;
+    items.push(item);
+
+    // reset input
+    itemDesc.value = '';
+    itemAmount.value = '';
 }

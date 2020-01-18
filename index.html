@@ -1,70 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Invoice Generator">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Invoice Generator">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/styles.css">
 
-    <title>Invoice Generator</title>
+	<title>Invoice Generator</title>
 </head>
 <body>
-    <!-- Invoice Form -->
-    <form>
-        <h1>Invoice</h1>
+	<!-- Invoice Form -->
+	<form>
+		<h1>Invoice</h1>
 
-        <!-- Bill To -->
-        <div class="tab">
-            <h5>Bill To</h5>
-            <input type="text" id="nameTxt" placeholder="Name">
-            <input type="text" id="phoneTxt" placeholder="Phone Number">
-            <input type="text" id="streetTxt" placeholder="Street and number, P.O. box, c/o">
-            <input type="text" id="unitTxt" placeholder="Apartment, suite, unit, building, floor, etc.">
-            <input type="text" id="cityTxt" placeholder="City">
-            <input type="text" id="provinceTxt" placeholder="Province">
-            <input type="text" id="zipCodeTxt" placeholder="Zip Code">
-        </div>
-        
-        <!-- Items -->
-        <div class="tab">
-            <h5>Items</h5>
-            <table id="itemTable"></table>
+		<!-- Bill To -->
+		<div class="tab">
+			<h5>Bill To</h5>
+			<input type="text" id="nameTxt" class="required" placeholder="Name">
+			<input type="text" id="addressTxt"class="required" placeholder="Address">
+		</div>
 
-            <input type="text" id="itemDescTxt" placeholder="Description">
-            <input type="text" id="itemAmountTxt" placeholder="Amount">
-            <button type="button" id="addItemBtn" onclick="addItem();">Add Item</button>
-        </div>
-        
-        <!-- Payment Method -->
-        <div class="tab">
-            <h5>Payment Method</h5>
-            <input type="radio" name="payment" value="bdo"> BDO<br>
-            <input type="radio" name="payment" value="bpi"> BPI<br>
-            <input type="radio" name="payment" value="gcash"> GCash<br>
-            <input type="radio" name="payment" value="cebuana"> Cebuana<br>
-            <input type="radio" name="payment" value="palawan"> Palawan Express<br>
-        </div class="tab">
+		<!-- Items -->
+		<div class="tab">
+			<h5>Items</h5>
+			<table id="itemTable"></table>
 
-        <!-- Buttons -->
-        <div>
-            <button type="button" id="prevBtn" onclick="nextPrev(-1);">Previous</button>
-            <button type="button" id="nextBtn" onclick="nextPrev(1);">Next</button>
-        </div>
-    </form>
-    
-    <!-- JS -->
-    <script src="js/app.js"></script>
-    
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+			<input type="text" id="itemDescTxt" placeholder="Description">
+			<input type="text" id="itemAmountTxt" placeholder="Amount">
+			<button type="button" id="addItemBtn" onclick="addItem();">Add Item</button>
+		</div>
+
+		<!-- Payment Method -->
+		<div class="tab">
+			<h5>Payment Method</h5>
+			<input type="radio" name="payment" value="bdo"> BDO<br>
+			<input type="radio" name="payment" value="bpi"> BPI<br>
+			<input type="radio" name="payment" value="gcash"> GCash<br>
+			<input type="radio" name="payment" value="cebuana"> Cebuana<br>
+			<input type="radio" name="payment" value="palawan"> Palawan Express<br>
+		</div>
+
+		<!-- Invoice Details -->
+		<div class="tab">
+			<h3>Invoice</h3>
+
+			<div>
+				<h5>Bill To</h5>
+				<div id="customerDetails"></div>
+			</div>
+			<div>
+				<h5>Items</h5>
+				<div id="itemDetails"></div>
+			</div>
+			<div>
+				<h5>Payment Method</h5>
+				<div id="paymentDetails"></div>
+			</div>
+		</div>
+
+		<!-- Buttons -->
+		<div>
+			<button type="button" id="prevBtn" onclick="nextPrev(-1);">Previous</button>
+			<button type="button" id="nextBtn" onclick="nextPrev(1);">Next</button>
+		</div>
+	</form>
+
+	<!-- JS -->
+	<script src="js/app.js"></script>
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
