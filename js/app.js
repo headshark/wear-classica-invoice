@@ -7,11 +7,12 @@ const user = {
     address: 'Pampanga'
 };
 const paymentMethod = {
-    bdo: {name: 'BDO', number: ''},
-    bpi: {name: 'BPI', number: ''},
-    gcash: {name: 'GCash', number: ''},
-    cebuana: {name: 'Cebuana Lhuillier', number: ''},
-    palawan: {name: 'Palawan Express', number: ''}
+    bdo: {accountName: 'Soniella Therese Yumang', accountNumber: ''},
+    bpi: {accountName: 'Meri Mocalyn Cruz', accountNumber: '1899776883'},
+    gcash: {accountName: 'Meri Mocalyn Cruz', accountNumber: ''},
+    lbc: {accountName: 'Soniella Therese Yumang', accountNumber: ''},
+    cebuana: {accountName: 'Soniella Therese Yumang', accountNumber: ''},
+    palawan: {accountName: 'Soniella Therese Yumang', accountNumber: ''}
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
