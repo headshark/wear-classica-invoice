@@ -1,6 +1,18 @@
 let currentTab = 0;
 let totalAmount = 0;
 let items = [];
+const user = {
+    name: 'Soniella Therese Yumang',
+    phone: '+63 977 105 9115',
+    address: 'Pampanga'
+};
+const paymentMethod = {
+    bdo: {name: 'BDO', number: ''},
+    bpi: {name: 'BPI', number: ''},
+    gcash: {name: 'GCash', number: ''},
+    cebuana: {name: 'Cebuana Lhuillier', number: ''},
+    palawan: {name: 'Palawan Express', number: ''}
+};
 
 document.addEventListener('DOMContentLoaded', (event) => {
     showTab(currentTab); 
