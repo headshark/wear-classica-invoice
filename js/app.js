@@ -1,4 +1,5 @@
 let currentTab = 0;
+let totalAmount = 0;
 let items = [];
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -72,8 +73,14 @@ addItem = () => {
     item.description = itemDesc.value;
     item.amount = itemAmount.value;
     items.push(item);
+    updateTotalAmount(itemAmount.value);
 
     // reset input
     itemDesc.value = '';
     itemAmount.value = '';
+}
+
+updateTotalAmount = (n) => {
+    totalAmount += parseFloat(n);
+    document.getElementById('totalAmount').innerHTML = totalAmount;
 }

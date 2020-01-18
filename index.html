@@ -18,7 +18,7 @@
 <body>
 	<!-- Invoice Form -->
 	<form>
-		<h1>Invoice</h1>
+		<h1 id="totalAmount">Invoice</h1>
 
 		<!-- Bill To -->
 		<div class="tab">
@@ -40,7 +40,7 @@
 		<!-- Shipping -->
 		<div class="tab">
 			<h5>Shipping Fee</h5>
-			<input type="text" id="shippingFeeTxt" placeholder="Shipping Fee">
+			<input type="text" id="shippingFeeTxt" placeholder="Shipping Fee" onchange="updateTotalAmount(this.value);">
 		</div>
 
 		<!-- Payment Method -->
