@@ -23,8 +23,8 @@
 		<!-- Bill To -->
 		<div class="tab">
 			<h5>Bill To</h5>
-			<input type="text" id="nameTxt" class="required" placeholder="Name">
-			<input type="text" id="addressTxt"class="required" placeholder="Address" list="provinceDatalist">
+			<input type="text" id="nameTxt" name="name" class="required" placeholder="Name">
+			<input type="text" id="addressTxt" name="address" placeholder="Address" list="provinceDatalist">
 		</div>
 
 		<!-- Items -->
@@ -32,15 +32,15 @@
 			<h5>Items</h5>
 			<table id="itemTable"></table>
 
-			<input type="text" id="itemDescTxt" placeholder="Description">
-			<input type="text" id="itemAmountTxt" placeholder="Amount">
+			<input type="text" id="itemDescTxt" name="itemDesc" placeholder="Description">
+			<input type="text" id="itemAmountTxt" name="itemAmount" placeholder="Amount">
 			<button type="button" id="addItemBtn">Add Item</button>
 		</div>
 
 		<!-- Shipping -->
 		<div class="tab">
 			<h5>Shipping Fee</h5>
-			<input type="text" id="shippingFeeTxt" placeholder="Shipping Fee">
+			<input type="text" id="shippingFeeTxt" name="shippingFee" class="required" placeholder="Shipping Fee">
 		</div>
 
 		<!-- Payment Method -->
@@ -83,7 +83,7 @@
 		</div>
 	</form>
 
-	<!-- Province Data List -->
+	<!-- Datalist -->
 	<datalist id="provinceDatalist"></datalist>
 
 	<!-- JS -->
