@@ -72,32 +72,7 @@ showTab = (n) => {
 
     if (n === (tab.length - 1)) {
         nextBtn.innerHTML = 'Submit';
-
-        let html = '<table>';
-        for (let i = 0; i < items.length; i++) {
-            let item = items[i];
-            
-            html += '<tr>';
-            html += '<td>' + item.description + '</td>';
-            html += '<td>' + item.amount + '</td>';
-            html += '</tr>';
-        }
-        html += '</table>';
-
-        let paymentDetails = '';
-        let paymentMethod = document.getElementsByName('payment');
-        for (let i = 0; i < paymentMethod.length; i++) {
-            if (paymentMethod[i].checked) {
-                paymentDetails = paymentMethod[i].value;
-
-                break;
-            }
-        }
-
-        document.getElementById('customerDetails').innerHTML = document.getElementById('nameTxt').value;
-        document.getElementById('itemDetails').innerHTML = html;
-        document.getElementById('shippingDetails').innerHTML = document.getElementById('shippingFeeTxt').value;
-        document.getElementById('paymentDetails').innerHTML = paymentDetails;
+        populateInvoiceDetails();
     } else {
         nextBtn.innerHTML = 'Next';
     }
@@ -134,4 +109,32 @@ addItem = () => {
 updateTotalAmount = (n) => {
     totalAmount += parseFloat(n);
     document.getElementById('totalAmount').innerHTML = totalAmount;
+}
+
+populateInvoiceDetails = () => {
+    let html = '<table>';
+    for (let i = 0; i < items.length; i++) {
+        let item = items[i];
+        
+        html += '<tr>';
+        html += '<td>' + item.description + '</td>';
+        html += '<td>' + item.amount + '</td>';
+        html += '</tr>';
+    }
+    html += '</table>';
+
+    let paymentDetails = '';
+    let paymentMethod = document.getElementsByName('payment');
+    for (let i = 0; i < paymentMethod.length; i++) {
+        if (paymentMethod[i].checked) {
+            paymentDetails = paymentMethod[i].value;
+
+            break;
+        }
+    }
+
+    document.getElementById('customerDetails').innerHTML = document.getElementById('nameTxt').value;
+    document.getElementById('itemDetails').innerHTML = html;
+    document.getElementById('shippingDetails').innerHTML = document.getElementById('shippingFeeTxt').value;
+    document.getElementById('paymentDetails').innerHTML = paymentDetails;
 }
