@@ -30,10 +30,26 @@ const paymentMethod = {
     cebuana: {accountName: 'Soniella Therese Yumang', accountNumber: ''},
     palawan: {accountName: 'Soniella Therese Yumang', accountNumber: ''}
 };
+let prevBtn = document.getElementById('prevBtn');
+let nextBtn = document.getElementById('nextBtn');
+let addItemBtn = document.getElementById('addItemBtn');
+let shippingFeeTxt = document.getElementById('shippingFeeTxt');
 
 document.addEventListener('DOMContentLoaded', (event) => {
     populateDataList();
     showTab(currentTab);
+});
+prevBtn.addEventListener('click', () => {
+    nextPrev(-1);
+});
+nextBtn.addEventListener('click', () => {
+    nextPrev(1);
+});
+addItemBtn.addEventListener('click', () => {
+    addItem();
+});
+shippingFeeTxt.addEventListener('change', () => {
+    updateTotalAmount(shippingFeeTxt.value);
 });
 
 populateDataList = () => {

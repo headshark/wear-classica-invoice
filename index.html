@@ -34,13 +34,13 @@
 
 			<input type="text" id="itemDescTxt" placeholder="Description">
 			<input type="text" id="itemAmountTxt" placeholder="Amount">
-			<button type="button" id="addItemBtn" onclick="addItem();">Add Item</button>
+			<button type="button" id="addItemBtn">Add Item</button>
 		</div>
 
 		<!-- Shipping -->
 		<div class="tab">
 			<h5>Shipping Fee</h5>
-			<input type="text" id="shippingFeeTxt" placeholder="Shipping Fee" onchange="updateTotalAmount(this.value);">
+			<input type="text" id="shippingFeeTxt" placeholder="Shipping Fee">
 		</div>
 
 		<!-- Payment Method -->
@@ -78,8 +78,8 @@
 
 		<!-- Buttons -->
 		<div>
-			<button type="button" id="prevBtn" onclick="nextPrev(-1);">Previous</button>
-			<button type="button" id="nextBtn" onclick="nextPrev(1);">Next</button>
+			<button type="button" id="prevBtn">Previous</button>
+			<button type="button" id="nextBtn">Next</button>
 		</div>
 	</form>
 
