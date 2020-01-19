@@ -51,6 +51,7 @@ addItemBtn.addEventListener('click', () => {
     addItem();
 });
 shippingFeeTxt.addEventListener('change', () => {
+    if (customer.shippingFee) updateTotalAmount(-customer.shippingFee);
     updateTotalAmount(shippingFeeTxt.value);
 });
 
