@@ -10,3 +10,9 @@ body {
 .tab {
     display: none;
 }
+
+.fixed-bottom {
+    bottom: 40px;
+    left: 0;
+    position: absolute;
+}
