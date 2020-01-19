@@ -86,7 +86,7 @@ nextPrev = (n) => {
     tab[currentTab].style.display = "none";
     currentTab = currentTab + n;
     console.log(customer);
-    
+
     showTab(currentTab);
 }
 
@@ -98,7 +98,7 @@ validateForm = () => {
         for (let i = 0; i < inputs.length; i++) {
             let input = inputs[i];
 
-            if (input.value === '' && input.className === 'required') {
+            if (input.value === '' && input.className.includes('required')) {
                 // input.className += ' invalid';
                 alert(input.name + ' is a required field.');
                 valid = false;
