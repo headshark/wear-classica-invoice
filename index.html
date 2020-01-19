@@ -25,7 +25,7 @@
 			<h5>Bill To</h5>
 			<input type="text" id="nameTxt" name="name" class="required" placeholder="Name">
 			<input type="text" id="addressTxt" name="address" placeholder="Address" list="provinceDatalist">
-			<input type="text" id="phoneTxt" name="phone" placeholder="Phone Number">
+			<input type="tel" id="phoneTxt" name="phone" placeholder="Phone Number">
 		</div>
 
 		<!-- Items -->
@@ -34,14 +34,14 @@
 			<table id="itemTable"></table>
 
 			<input type="text" id="itemDescTxt" name="itemDesc" placeholder="Description">
-			<input type="text" id="itemAmountTxt" name="itemAmount" placeholder="Amount">
+			<input type="number" id="itemAmountTxt" name="itemAmount" placeholder="Amount" min="0" max="999999">
 			<button type="button" id="addItemBtn">Add Item</button>
 		</div>
 
 		<!-- Shipping -->
 		<div class="tab">
 			<h5>Shipping Fee</h5>
-			<input type="text" id="shippingFeeTxt" name="shippingFee" class="required" placeholder="Shipping Fee">
+			<input type="number" id="shippingFeeTxt" name="shippingFee" class="required" placeholder="Shipping Fee" min="0" max="999999">
 			<a href="http://www.jrs-express.com/Home/Rates?Length=4" target="_blank">JRS Express Rates</a>
 		</div>
 
