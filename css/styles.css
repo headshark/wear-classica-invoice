@@ -36,7 +36,7 @@ body {
 .item-table tr {
     background-color: #fff;
     border-radius: .25rem;
-    margin: 0 0 1rem;
+    margin: 0 0 .5rem;
 }
 
 .item-table tr td {
