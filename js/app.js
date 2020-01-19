@@ -166,34 +166,24 @@ addItem = () => {
 }
 
 updateTotalAmount = (n) => {
-    custtotalAmount += parseFloat(n);
-    document.getElementById('totalAmount').innerHTML = custtotalAmount;
+    customer.totalAmount += parseFloat(n);
+    document.getElementById('totalAmount').innerHTML = customer.totalAmount;
 }
 
 populateInvoiceDetails = () => {
-    let html = '<table>';
-    for (let i = 0; i < items.length; i++) {
-        let item = items[i];
+    let itemTable = '<table>';
+    for (let i = 0; i < customer.items.length; i++) {
+        let item = customer.items[i];
         
-        html += '<tr>';
-        html += '<td>' + item.description + '</td>';
-        html += '<td>' + item.amount + '</td>';
-        html += '</tr>';
+        itemTable += '<tr>';
+        itemTable += '<td>' + item.description + '</td>';
+        itemTable += '<td>' + item.amount + '</td>';
+        itemTable += '</tr>';
     }
-    html += '</table>';
+    itemTable += '</table>';
 
-    let paymentDetails = '';
-    let paymentMethod = document.getElementsByName('payment');
-    for (let i = 0; i < paymentMethod.length; i++) {
-        if (paymentMethod[i].checked) {
-            paymentDetails = paymentMethod[i].value;
-
-            break;
-        }
-    }
-
-    document.getElementById('customerDetails').innerHTML = document.getElementById('nameTxt').value;
-    document.getElementById('itemDetails').innerHTML = html;
-    document.getElementById('shippingDetails').innerHTML = document.getElementById('shippingFeeTxt').value;
-    document.getElementById('paymentDetails').innerHTML = paymentDetails;
+    document.getElementById('customerDetails').innerHTML = customer.name + ' ' + customer.address;
+    document.getElementById('itemDetails').innerHTML = itemTable;
+    document.getElementById('shippingDetails').innerHTML = customer.shippingFee;
+    document.getElementById('paymentDetails').innerHTML = customer.paymentMethod;
 }
