@@ -7,14 +7,25 @@ body {
     margin: 0;
 }
 
-.tab {
-    display: none;
+.btn-secondary {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.fixed-top {
+    top: 0;
+    left: 0;
+    position: absolute;
 }
 
 .fixed-bottom {
     bottom: 40px;
     left: 0;
     position: absolute;
+}
+
+.tab {
+    display: none;
 }
 
 .item-table {
