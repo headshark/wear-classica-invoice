@@ -152,7 +152,10 @@ addItem = () => {
         
         updateTotalAmount(itemAmountTxt.value);
         cell1.innerHTML = itemDescTxt.value;
-        cell2.innerHTML = itemAmountTxt.value;
+        cell2.innerHTML = '₱' + itemAmountTxt.value;
+        row.className = 'row test';
+        cell1.className = 'col-8';
+        cell2.className = 'col-4 text-right';
         item.description = itemDescTxt.value;
         item.amount = itemAmountTxt.value;
         items.push(item);
@@ -168,7 +171,7 @@ addItem = () => {
 
 updateTotalAmount = (n) => {
     customer.totalAmount += parseFloat(n);
-    document.getElementById('totalAmount').innerHTML = customer.totalAmount;
+    document.getElementById('totalAmount').innerHTML = '₱' + customer.totalAmount;
 }
 
 populateInvoiceDetails = () => {

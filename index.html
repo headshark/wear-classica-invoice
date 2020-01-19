@@ -22,8 +22,8 @@
 	<header>
 		<div class="jumbotron jumbotron-fluid text-center">
 			<div class="container">
-				<button type="button" id=prevBtn><</button>
-				<h1 id="totalAmount">Invoice</h1>
+				<button type="button" id="prevBtn"><</button>
+				<h1 id="totalAmount" class="font-weight-bold">Invoice</h1>
 			</div>
 		</div>
 	</header>
@@ -71,12 +71,47 @@
 
 			<!-- Items -->
 			<div class="tab">
-				<h5>Items</h5>
-				<table id="itemTable"></table>
-
-				<input type="text" id="itemDescTxt" name="itemDesc" placeholder="Description">
-				<input type="number" id="itemAmountTxt" name="itemAmount" placeholder="Amount" min="0" max="999999">
-				<button type="button" id="addItemBtn">Add Item</button>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<h6>Items</h6>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<table id="itemTable" class="table item-table"></table>
+							<!-- <div id="test"></div> -->
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-8">
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" id="itemDescTxt" name="itemDesc" class="form-control" placeholder="Description">
+							</div>
+						</div>
+					</div>
+					<div class="col-4 pl-0">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">₱</span>
+								</div>
+								<input type="number" id="itemAmountTxt" name="itemAmount" class="text-right form-control" min="0" max="999999">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<button type="button" id="addItemBtn" class="btn btn-block btn-light btn-lg">+</button>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<!-- Shipping -->

@@ -1,5 +1,5 @@
 body {
-    background-color: #fdfdfd;
+    background-color: #f1f1f2;
     color: #333;
     font-family: "Montserrat", sans-serif;
     font-size: 10pt;
@@ -15,4 +15,20 @@ body {
     bottom: 40px;
     left: 0;
     position: absolute;
+}
+
+.item-table {
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.item-table tr {
+    background-color: #fff;
+    border-radius: .25rem;
+    margin: 0 0 1rem;
+}
+
+.item-table tr td {
+    border: 0;
+    padding: 1rem 1.25rem;
 }
