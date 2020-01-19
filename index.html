@@ -7,6 +7,9 @@
 	<meta name="description" content="Invoice Generator">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -16,72 +19,111 @@
 	<title>Invoice Generator</title>
 </head>
 <body>
+	<header>
+		<div class="jumbotron jumbotron-fluid text-center">
+			<div class="container">
+				<button type="button" id=prevBtn><</button>
+				<h1 id="totalAmount">Invoice</h1>
+			</div>
+		</div>
+	</header>
+
 	<!-- Invoice Form -->
 	<form>
-		<h1 id="totalAmount">Invoice</h1>
-
-		<!-- Bill To -->
-		<div class="tab">
-			<h5>Bill To</h5>
-			<input type="text" id="nameTxt" name="name" class="required" placeholder="Name">
-			<input type="text" id="addressTxt" name="address" placeholder="Address" list="provinceDatalist">
-			<input type="tel" id="phoneTxt" name="phone" placeholder="Phone Number">
-		</div>
-
-		<!-- Items -->
-		<div class="tab">
-			<h5>Items</h5>
-			<table id="itemTable"></table>
-
-			<input type="text" id="itemDescTxt" name="itemDesc" placeholder="Description">
-			<input type="number" id="itemAmountTxt" name="itemAmount" placeholder="Amount" min="0" max="999999">
-			<button type="button" id="addItemBtn">Add Item</button>
-		</div>
-
-		<!-- Shipping -->
-		<div class="tab">
-			<h5>Shipping Fee</h5>
-			<input type="number" id="shippingFeeTxt" name="shippingFee" class="required" placeholder="Shipping Fee" min="0" max="999999">
-			<a href="http://www.jrs-express.com/Home/Rates?Length=4" target="_blank">JRS Express Rates</a>
-		</div>
-
-		<!-- Payment Method -->
-		<div class="tab">
-			<h5>Payment Method</h5>
-			<input type="radio" name="payment" value="bdo">BDO<br>
-			<input type="radio" name="payment" value="bpi">BPI<br>
-			<input type="radio" name="payment" value="gcash">GCash<br>
-			<input type="radio" name="payment" value="lbc">LBC<br>
-			<input type="radio" name="payment" value="cebuana">Cebuana<br>
-			<input type="radio" name="payment" value="palawan">Palawan Express<br>
-		</div>
-
-		<!-- Invoice Details -->
-		<div class="tab">
-			<h3>Invoice</h3>
-
-			<div>
-				<h5>Bill To</h5>
-				<div id="customerDetails"></div>
+		<div class="container-fluid">
+			<!-- Bill To -->
+			<div class="tab">
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<h6>Bill To</h6>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<div class="input-group input-group-lg">
+								<input type="text" id="nameTxt" name="name" class="form-control required" placeholder="Name">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<div class="input-group input-group-lg">
+								<input type="text" id="addressTxt" name="address" class="form-control" placeholder="Address (Optional)" list="provinceDatalist">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<div class="input-group input-group-lg">
+								<input type="tel" id="phoneTxt" name="phone" class="form-control" placeholder="Phone Number (Optional)">
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div>
+
+			<!-- Items -->
+			<div class="tab">
 				<h5>Items</h5>
-				<div id="itemDetails"></div>
-			</div>
-			<div>
-				<h5>Shipping</h5>
-				<div id="shippingDetails"></div>
-			</div>
-			<div>
-				<h5>Payment Method</h5>
-				<div id="paymentDetails"></div>
-			</div>
-		</div>
+				<table id="itemTable"></table>
 
-		<!-- Buttons -->
-		<div>
-			<button type="button" id="prevBtn">Previous</button>
-			<button type="button" id="nextBtn">Next</button>
+				<input type="text" id="itemDescTxt" name="itemDesc" placeholder="Description">
+				<input type="number" id="itemAmountTxt" name="itemAmount" placeholder="Amount" min="0" max="999999">
+				<button type="button" id="addItemBtn">Add Item</button>
+			</div>
+
+			<!-- Shipping -->
+			<div class="tab">
+				<h5>Shipping Fee</h5>
+				<input type="number" id="shippingFeeTxt" name="shippingFee" class="required" placeholder="Shipping Fee" min="0" max="999999">
+				<a href="http://www.jrs-express.com/Home/Rates?Length=4" target="_blank">JRS Express Rates</a>
+			</div>
+
+			<!-- Payment Method -->
+			<div class="tab">
+				<h5>Payment Method</h5>
+				<input type="radio" name="payment" value="bdo">BDO<br>
+				<input type="radio" name="payment" value="bpi">BPI<br>
+				<input type="radio" name="payment" value="gcash">GCash<br>
+				<input type="radio" name="payment" value="lbc">LBC<br>
+				<input type="radio" name="payment" value="cebuana">Cebuana<br>
+				<input type="radio" name="payment" value="palawan">Palawan Express<br>
+			</div>
+
+			<!-- Invoice Details -->
+			<div class="tab">
+				<h3>Invoice</h3>
+
+				<div>
+					<h5>Bill To</h5>
+					<div id="customerDetails"></div>
+				</div>
+				<div>
+					<h5>Items</h5>
+					<div id="itemDetails"></div>
+				</div>
+				<div>
+					<h5>Shipping</h5>
+					<div id="shippingDetails"></div>
+				</div>
+				<div>
+					<h5>Payment Method</h5>
+					<div id="paymentDetails"></div>
+				</div>
+			</div>
+
+			<!-- Buttons -->
+			<div>
+				<!-- <button type="button" id="prevBtn">Previous</button> -->
+				<button type="button" id="nextBtn" class="btn btn-block btn-primary">Next</button>
+			</div>
 		</div>
 	</form>
 
