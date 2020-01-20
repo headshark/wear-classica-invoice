@@ -25,8 +25,10 @@
 	<header>
 		<div class="jumbotron jumbotron-fluid text-center">
 			<div class="container">
-				<button type="button" id="prevBtn" class="btn btn-secondary btn-lg fixed-top"><i class="fas fa-chevron-left"></i></button>
-				<h1 id="totalAmount" class="font-weight-bold">Invoice</h1>
+				<button type="button" id="prevBtn" class="btn btn-outline-dark btn-lg fixed-top"><i class="fas fa-chevron-left"></i></button>
+				<h5 id="totalAmountLabel" class="mb-0">Invoice</h5>
+				<h1 id="totalAmountTxt" class="font-weight-bold">0</h1>
+				<img src="images/invoice-icon.png" alt="Invoice" id="invoiceImg">
 			</div>
 		</div>
 	</header>
@@ -56,7 +58,7 @@
 					<div class="col-12">
 						<div class="form-group">
 							<div class="input-group input-group-lg">
-								<input type="text" id="addressTxt" name="address" class="form-control" placeholder="Address (Optional)" list="provinceDatalist">
+								<input type="text" id="addressTxt" name="address" class="form-control" placeholder="Address" list="provinceDatalist">
 							</div>
 						</div>
 					</div>
@@ -65,7 +67,7 @@
 					<div class="col-12">
 						<div class="form-group">
 							<div class="input-group input-group-lg">
-								<input type="tel" id="phoneTxt" name="phone" class="form-control" placeholder="Phone Number (Optional)">
+								<input type="tel" id="phoneTxt" name="phone" class="form-control" placeholder="Phone Number">
 							</div>
 						</div>
 					</div>
@@ -111,7 +113,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group">
-							<button type="button" id="addItemBtn" class="btn btn-block btn-light btn-lg">+</button>
+							<button type="button" id="addItemBtn" class="btn btn-block btn-light btn-lg"><i class="fas fa-plus"></i></button>
 						</div>
 					</div>
 				</div>
@@ -160,7 +162,7 @@
 			<!-- Buttons -->
 			<div class="container-fluid fixed-bottom">
 				<!-- <button type="button" id="prevBtn">Previous</button> -->
-				<button type="button" id="nextBtn" class="btn btn-block btn-primary">Next</button>
+				<button type="button" id="nextBtn" class="btn btn-block btn-dark">Next</button>
 			</div>
 		</div>
 	</form>

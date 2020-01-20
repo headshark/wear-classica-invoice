@@ -30,6 +30,9 @@ const paymentMethod = {
     cebuana: {accountName: 'Soniella Therese Yumang', accountNumber: ''},
     palawan: {accountName: 'Soniella Therese Yumang', accountNumber: ''}
 };
+let totalAmountLabel = document.getElementById('totalAmountLabel');
+let totalAmountTxt = document.getElementById('totalAmountTxt');
+let invoiceImg = document.getElementById('invoiceImg');
 let prevBtn = document.getElementById('prevBtn');
 let nextBtn = document.getElementById('nextBtn');
 let addItemBtn = document.getElementById('addItemBtn');
@@ -40,6 +43,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     populateProvinceDatalist();
     showTab(currentTab);
     customer.totalAmount = 0;
+    totalAmountTxt.style.display = 'none';
 });
 nextBtn.addEventListener('click', () => {
     nextPrev(1);
@@ -171,7 +175,10 @@ addItem = () => {
 
 updateTotalAmount = (n) => {
     customer.totalAmount += parseFloat(n);
-    document.getElementById('totalAmount').innerHTML = '₱' + customer.totalAmount;
+    totalAmountLabel.innerHTML = 'Total Amount';
+    totalAmountTxt.innerHTML = '₱' + customer.totalAmount;
+    totalAmountTxt.style.display = 'block';
+    invoiceImg.style.display = 'none';
 }
 
 populateInvoiceDetails = () => {
