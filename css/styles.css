@@ -7,6 +7,14 @@ body {
     margin: 0;
 }
 
+a {
+    color: #00a859;
+}
+
+a:hover {
+    color: #007a41;
+}
+
 .jumbotron {
     background-color: #fff;
     margin: 0;

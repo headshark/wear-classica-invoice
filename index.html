@@ -101,7 +101,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">₱</span>
 								</div>
-								<input type="number" id="itemAmountTxt" name="itemAmount" class="text-right form-control" min="0" max="999999">
+								<input type="number" id="itemAmountTxt" name="itemAmount" class="form-control text-right" min="0" max="999999">
 							</div>
 						</div>
 					</div>
@@ -117,9 +117,32 @@
 
 			<!-- Shipping -->
 			<div class="tab">
-				<h5>Shipping Fee</h5>
-				<input type="number" id="shippingFeeTxt" name="shippingFee" class="required" placeholder="Shipping Fee" min="0" max="999999">
-				<a href="http://www.jrs-express.com/Home/Rates?Length=4" target="_blank">JRS Express Rates</a>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<h6>Shipping Fee</h6>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">₱</span>
+								</div>
+								<input type="number" id="shippingFeeTxt" name="shippingFee" class="form-control text-right required" min="0" max="999999">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group text-center">
+							<a href="http://www.jrs-express.com/Home/Rates?Length=4" target="_blank">JRS Express Rates</a>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<!-- Payment Method -->
