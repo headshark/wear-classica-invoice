@@ -20,15 +20,15 @@ const provinces = [
 const user = {
     name: 'Soniella Therese Yumang',
     phone: '+63 977 105 9115',
-    address: 'Pampanga'
+    address: 'Macabebe, Pampanga'
 };
-const paymentMethod = {
-    bdo: {accountName: 'Soniella Therese Yumang', accountNumber: ''},
-    bpi: {accountName: 'Meri Mocalyn Cruz', accountNumber: '1899776883'},
-    gcash: {accountName: 'Meri Mocalyn Cruz', accountNumber: ''},
-    lbc: {accountName: 'Soniella Therese Yumang', accountNumber: ''},
-    cebuana: {accountName: 'Soniella Therese Yumang', accountNumber: ''},
-    palawan: {accountName: 'Soniella Therese Yumang', accountNumber: ''}
+const account = {
+    bpi: {title: 'BPI', accountName: 'Meri Mocalyn Cruz', accountNumber: '1899 7768 83'},
+    bdo: {title: 'BDO', accountName: user.name, accountNumber: '0013 1124 6388'},
+    gcash: {title: 'GCash', accountName: user.name, phoneNumber: user.phone},
+    lbc: {title: 'LBC', accountName: user.name, phoneNumber: user.phone, address: user.address},
+    cebuana: {title: 'Cebuana Lhuillier', accountName: user.name, phoneNumber: user.phone, address: user.address},
+    palawan: {title: 'Palawan Express', accountName: user.name, phoneNumber: user.phone, address: user.address}
 };
 let totalAmountLabel = document.getElementById('totalAmountLabel');
 let totalAmountTxt = document.getElementById('totalAmountTxt');
@@ -37,6 +37,7 @@ let prevBtn = document.getElementById('prevBtn');
 let nextBtn = document.getElementById('nextBtn');
 let addItemBtn = document.getElementById('addItemBtn');
 let shippingFeeTxt = document.getElementById('shippingFeeTxt');
+let paymentMethodTxt = document.getElementById('paymentMethodTxt');
 let tab = document.querySelectorAll('.tab');
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -97,7 +98,7 @@ nextPrev = (n) => {
 validateForm = () => {
     let valid = true;
     
-    if (currentTab === 0 || currentTab == 2) {
+    if (currentTab === 0) {
         let inputs = tab[currentTab].getElementsByTagName('input');
         for (let i = 0; i < inputs.length; i++) {
             let input = inputs[i];
@@ -119,24 +120,24 @@ validateForm = () => {
         }
     }
 
-    if (currentTab === 3) {
-        let payments = document.getElementsByName('payment');
-        for (let i = 0; i < payments.length; i++) {
-            let payment = payments[i];
-
-            if (payment.checked) {
-                customer.paymentMethod = payment.value;
-                valid = true;
-                test = true;
-
-                break;
-            } else {
-                valid = false;
-            }
+    if (currentTab === 2) {
+        if (shippingFeeTxt.value === '' && shippingFeeTxt.className.includes('required')) {
+            alert(shippingFeeTxt.name + ' is a required field.');
+            valid = false;
+            return;
+        } else {
+            customer[shippingFeeTxt.name] = shippingFeeTxt.value;
         }
 
-        if (!valid) {
-            alert('please select a payment method');
+        if (paymentMethodTxt.value === '' && paymentMethodTxt.className.includes('required')) {
+            alert(paymentMethodTxt.name + ' is a required field.');
+            valid = false;
+        } else {
+            for (let [key, value] of Object.entries(account)) {
+                if (key === paymentMethodTxt.value) {
+                    customer.paymentDetails = value;
+                }
+            }
         }
     }
     
@@ -196,5 +197,5 @@ populateInvoiceDetails = () => {
     document.getElementById('customerDetails').innerHTML = customer.name + ' ' + customer.address;
     document.getElementById('itemDetails').innerHTML = itemTable;
     document.getElementById('shippingDetails').innerHTML = customer.shippingFee;
-    document.getElementById('paymentDetails').innerHTML = customer.paymentMethod;
+    document.getElementById('paymentDetails').innerHTML = customer.paymentDetails.title;
 }

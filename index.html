@@ -28,7 +28,7 @@
 				<button type="button" id="prevBtn" class="btn btn-outline-dark btn-lg fixed-top"><i class="fas fa-chevron-left"></i></button>
 				<h5 id="totalAmountLabel" class="mb-0">Invoice</h5>
 				<h1 id="totalAmountTxt" class="font-weight-bold">0</h1>
-				<img src="images/invoice-icon.png" alt="Invoice" id="invoiceImg">
+				<img src="images/invoice-icon-brown.png" alt="Invoice" id="invoiceImg">
 			</div>
 		</div>
 	</header>
@@ -115,7 +115,7 @@
 				</div>
 			</div>
 
-			<!-- Shipping -->
+			<!-- Shipping & Payment Method -->
 			<div class="tab">
 				<div class="row">
 					<div class="col-12">
@@ -127,7 +127,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group">
-							<div class="input-group">
+							<div class="input-group input-group-lg">
 								<div class="input-group-prepend">
 									<span class="input-group-text">₱</span>
 								</div>
@@ -143,17 +143,31 @@
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<!-- Payment Method -->
-			<div class="tab">
-				<h5>Payment Method</h5>
-				<input type="radio" name="payment" value="bdo">BDO<br>
-				<input type="radio" name="payment" value="bpi">BPI<br>
-				<input type="radio" name="payment" value="gcash">GCash<br>
-				<input type="radio" name="payment" value="lbc">LBC<br>
-				<input type="radio" name="payment" value="cebuana">Cebuana<br>
-				<input type="radio" name="payment" value="palawan">Palawan Express<br>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<h6>Payment Method</h6>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="input-group input-group-lg">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="far fa-credit-card"></i></span>
+							</div>
+							<select class="custom-select required" id="paymentMethodTxt" name="paymentMethod">
+								<option value=""></option>
+								<option value="bpi">BPI</option>
+								<option value="bdo">BDO</option>
+								<option value="gcash">GCash</option>
+								<option value="lbc">LBC</option>
+								<option value="cebuana">Cebuana Lhuillier</option>
+								<option value="palawan">Palawan Express</option>
+							</select>
+						  </div>
+					</div>
+				</div>
 			</div>
 
 			<!-- Invoice Details -->
