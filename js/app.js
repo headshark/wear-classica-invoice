@@ -66,8 +66,13 @@ addItemBtn.addEventListener('click', () => {
     addItem();
 });
 shippingFeeTxt.addEventListener('change', () => {
-    if (customer.shippingFee) updateTotalAmount(-customer.shippingFee);
+    if (customer.shippingFee) {
+        if (shippingFeeTxt.value !== customer.shippingFee) {
+            updateTotalAmount(-customer.shippingFee);
+        }
+    }
     updateTotalAmount(shippingFeeTxt.value);
+    customer.shippingFee = shippingFeeTxt.value;
 });
 
 populateProvinceDatalist = () => {
@@ -274,12 +279,13 @@ populateInvoiceDetails = () => {
 }
 
 resetForm = () => {
+    // location.reload();
     document.getElementById('form').reset();
     currentTab = 0;
     items = [];
     customer = [];
     customer.totalAmount = 0;
-    
+
     showTab(currentTab);
     itemTable.innerHTML = '';
     totalAmountLabel.innerHTML = 'Invoice';
