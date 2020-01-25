@@ -1,7 +1,7 @@
 let currentTab = 0;
-let customer = {};
 let items = [];
-const provinces = {
+let customer = {};
+const shippingRate = {
     'Abra': {expressLetter: 107, onePounder: 130, threePounder: 238},
     'Agusan del Norte': {expressLetter: 132, onePounder: 162, threePounder: 311},
     'Agusan del Sur': {expressLetter: 132, onePounder: 162, threePounder: 311},
@@ -107,6 +107,7 @@ let prevBtn = document.getElementById('prevBtn');
 let nextBtn = document.getElementById('nextBtn');
 let addItemBtn = document.getElementById('addItemBtn');
 let itemTable = document.getElementById('itemTable');
+let addressTxt = document.getElementById('addressTxt');
 let shippingFeeTxt = document.getElementById('shippingFeeTxt');
 let paymentMethodTxt = document.getElementById('paymentMethodTxt');
 let tab = document.querySelectorAll('.tab');
@@ -134,22 +135,61 @@ addItemBtn.addEventListener('click', () => {
     addItem();
 });
 shippingFeeTxt.addEventListener('change', () => {
-    if (shippingFeeTxt.value !== '') {
-        if (customer.shippingFee) {
-            if (shippingFeeTxt.value !== customer.shippingFee) {
-                updateTotalAmount(-customer.shippingFee);
-            }
+    console.log('test');
+    updateFeeAndTotal(shippingFeeTxt.value);
+});
+
+addressTxt.addEventListener('change', () => {
+    document.getElementById('shipTo').innerHTML = addressTxt.value;
+    for (let [key, value] of Object.entries(shippingRate)) {
+        if (addressTxt.value.toLowerCase() === key.toLowerCase() ||
+            addressTxt.value.toLowerCase().includes(key.toLowerCase())) {
+            
+            shippingFeeTxt.value = value.expressLetter;
         }
-        updateTotalAmount(shippingFeeTxt.value);
-        customer.shippingFee = shippingFeeTxt.value;
-    } else {
-        updateTotalAmount(-customer.shippingFee);
-        customer.shippingFee = 0;
     }
 });
 
+let rates = document.getElementsByName('rate');
+for (let i = 0; i < rates.length; i++) {
+    rates[i].addEventListener('change', (e) => {
+        let id = rates[i].id;
+        let rate;
+
+        for (let [key, value] of Object.entries(shippingRate)) {
+            if (customer.address.toLowerCase() === key.toLowerCase() ||
+                customer.address.toLowerCase().includes(key.toLowerCase())) {
+                
+                if (id === 'expressLetter') {
+                    rate = value.expressLetter;
+                    shippingFeeTxt.disabled = true;
+                } else if (id === 'onePounder') {
+                    rate = value.onePounder;   
+                    shippingFeeTxt.disabled = true;
+                } else if (id === 'threePounder') {
+                    rate = value.threePounder;
+                    shippingFeeTxt.disabled = true;
+                } else {
+                    // if custom shipping rate
+                    rate = '';
+                    shippingFeeTxt.disabled = false;
+                    shippingFeeTxt.focus();
+                }
+
+                shippingFeeTxt.value = rate;
+                updateFeeAndTotal(rate);
+            }
+        }
+    });
+}
+
 populateProvinceDatalist = () => {
+    let provinces = [];
     let options = '';
+
+    for (let [key, value] of Object.entries(shippingRate))
+        provinces.push(key);
+
     for (let i = 0; i < provinces.length; i++)
         options += '<option value="' + provinces[i] + '" />';
         
@@ -176,12 +216,18 @@ showTab = (n) => {
     }
 }
 
+let updated = false;
 nextPrev = (n) => {
     if (n == 1 && !validateForm()) return false;
 
     tab[currentTab].style.display = "none";
     currentTab = currentTab + n;
     console.log(customer);
+
+    if (currentTab === 2 && !updated) {
+        updateFeeAndTotal(shippingFeeTxt.value);
+        updated = true;
+    }
 
     if (currentTab >= tab.length) {
         resetForm();
@@ -277,6 +323,21 @@ updateTotalAmount = (n) => {
     invoiceImg.style.display = 'none';
 }
 
+updateFeeAndTotal = (n) => {
+    if (n !== '') {
+        if (customer.shippingFee) {
+            if (n !== customer.shippingFee) {
+                updateTotalAmount(-customer.shippingFee);
+            }
+        }
+        updateTotalAmount(n);
+        customer.shippingFee = n;
+    } else {
+        updateTotalAmount(-customer.shippingFee);
+        customer.shippingFee = 0;
+    }
+}
+
 populateInvoiceDetails = () => {
     let currentDate = new Date();
     let formattedDate = ("0" + (currentDate.getMonth() + 1)).slice(-2) + '-'
@@ -339,7 +400,6 @@ populateInvoiceDetails = () => {
     itemTable += '<td class="col-8">Shipping</td>';
     itemTable += '<td class="col-2 text-right">₱' + customer.shippingFee + '</td>';
     itemTable += '</tr>';
-    itemTable += '<hr>';
     itemTable += '<tr class="row align-items-center pt-0">';
     itemTable += '<td class="col-9 text-right total">Total</td>';
     itemTable += '<td class="col-3 text-right total">₱' + customer.totalAmount + '</td>';
