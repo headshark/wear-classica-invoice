@@ -249,9 +249,24 @@ validateForm = () => {
                 // input.className += ' invalid';
                 alert(input.name + ' is a required field.');
                 valid = false;
+                return;
             } else {
                 customer[input.name] = input.value;
             }
+        }
+
+        // check if address is valid
+        for (let [key, value] of Object.entries(shippingRate)) {
+            if (addressTxt.value.toLowerCase().includes(key.toLowerCase())) {
+                valid = true;
+                break;
+            } else {
+                valid = false;
+            }
+        }
+
+        if (!valid) {
+            alert('invalid address.');
         }
     }
 
