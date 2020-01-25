@@ -22,13 +22,13 @@
 	<title>Invoice Generator</title>
 </head>
 <body>
-	<header>
+	<header id="header">
 		<div class="jumbotron jumbotron-fluid text-center">
 			<div class="container">
 				<button type="button" id="prevBtn" class="btn btn-outline-dark btn-lg fixed-top"><i class="fas fa-chevron-left"></i></button>
 				<h5 id="totalAmountLabel" class="mb-0">Invoice</h5>
 				<h1 id="totalAmountTxt" class="font-weight-bold">0</h1>
-				<img src="images/invoice-icon-brown.png" alt="Invoice" id="invoiceImg">
+				<img src="images/invoice-icon-brown.png" alt="Invoice Icon" id="invoiceImg">
 			</div>
 		</div>
 	</header>
@@ -59,15 +59,6 @@
 						<div class="form-group">
 							<div class="input-group input-group-lg">
 								<input type="text" id="addressTxt" name="address" class="form-control" placeholder="Address" list="provinceDatalist">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<div class="form-group">
-							<div class="input-group input-group-lg">
-								<input type="tel" id="phoneTxt" name="phone" class="form-control" placeholder="Phone Number">
 							</div>
 						</div>
 					</div>
@@ -138,13 +129,6 @@
 				</div>
 				<div class="row">
 					<div class="col-12">
-						<div class="form-group text-center">
-							<a href="http://www.jrs-express.com/Home/Rates?Length=4" target="_blank">JRS Express Rates</a>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
 						<div class="form-group">
 							<h6>Payment Method</h6>
 						</div>
@@ -152,49 +136,78 @@
 				</div>
 				<div class="row">
 					<div class="col-12">
-						<div class="input-group input-group-lg">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="far fa-credit-card"></i></span>
+						<div class="form-group">
+							<div class="input-group input-group-lg">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="far fa-credit-card"></i></span>
+								</div>
+								<select class="custom-select required" id="paymentMethodTxt" name="paymentMethod">
+									<option value=""></option>
+									<option value="bpi">BPI</option>
+									<option value="bdo">BDO</option>
+									<option value="gcash">GCash</option>
+									<option value="lbc">LBC</option>
+									<option value="cebuana">Cebuana Lhuillier</option>
+									<option value="palawan">Palawan Express</option>
+								</select>
 							</div>
-							<select class="custom-select required" id="paymentMethodTxt" name="paymentMethod">
-								<option value=""></option>
-								<option value="bpi">BPI</option>
-								<option value="bdo">BDO</option>
-								<option value="gcash">GCash</option>
-								<option value="lbc">LBC</option>
-								<option value="cebuana">Cebuana Lhuillier</option>
-								<option value="palawan">Palawan Express</option>
-							</select>
 						  </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group text-center">
+							<a href="http://www.jrs-express.com/Home/Rates?Length=4" target="_blank">JRS Express Rates</a>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<!-- Invoice Details -->
 			<div class="tab">
-				<h3>Invoice</h3>
+				<table class="table">
+					<tr>
+						<th class="align-middle pl-0"><h3>Invoice</h3></th>
+						<th class="align-middle pr-0 text-right"><img src="images/wear-classica-logo.png" alt="Wear Classica Logo" class="logo rounded-circle"></th>
+					</tr>
+				</table>
+				
+				<p>Bill To</p6>
+				<div class="details">
+					<table class="table">
+						<tr class="row align-items-center">
+							<td class="col-2">
+								<img src="images/woman.png" alt="Woman" class="pr-0">
+							</td>
+							<td class="col-10">
+								<div id="customerName">Name</div>
+								<div id="customerAddress" class="small">Address</div>
+							</td>
+						</tr>
+					</table>
+				</div>
 
-				<div>
-					<h5>Bill To</h5>
-					<div id="customerDetails"></div>
-				</div>
-				<div>
-					<h5>Items</h5>
-					<div id="itemDetails"></div>
-				</div>
-				<div>
-					<h5>Shipping</h5>
-					<div id="shippingDetails"></div>
-				</div>
-				<div>
-					<h5>Payment Method</h5>
-					<div id="paymentDetails"></div>
+				<p>Items</p>
+				<div id="itemDetails" class="details"></div>
+
+				<p>Payment Method</p>
+				<div class="details">
+					<table class="table">
+						<tr class="row align-items-center">
+							<td class="col-12">
+								<div id="title">Account</div>
+								<div id="accountName">Account Name</div>
+								<div id="accountNumber">Account Number</div>
+								<div id="accountAddress"></div>
+								<div id="dueDate"></div>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 
 			<!-- Buttons -->
 			<div class="container-fluid fixed-bottom">
-				<!-- <button type="button" id="prevBtn">Previous</button> -->
 				<button type="button" id="nextBtn" class="btn btn-block btn-dark">Next</button>
 			</div>
 		</div>

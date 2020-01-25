@@ -15,6 +15,11 @@ a:hover {
     color: #007a41;
 }
 
+p {
+    font-size: .75rem;
+    margin-bottom: .5rem;
+}
+
 .jumbotron {
     background-color: #fff;
     margin: 0;
@@ -51,10 +56,13 @@ a:hover {
     display: none;
 }
 
+.table {
+    margin-bottom: 0;
+}
+
 .item-table {
     font-size: 1rem;
     font-weight: 800;
-    margin-bottom: 0;
 }
 
 .item-table tr {
@@ -66,4 +74,34 @@ a:hover {
 .item-table tr td {
     border: 0;
     padding: 1rem 1.25rem;
+}
+
+.logo {
+    width: 100px;
+}
+
+.details {
+    border-radius: .25rem;
+    box-shadow: 0 1px 15px rgba(0,0,0,0.1);
+    margin: 0 0 1rem;
+}
+
+.details img {
+    width: 32px;
+}
+
+.details table tr {
+    border: 0;
+    padding: 1rem;
+    margin: 0;
+}
+.details table tr td {
+    border: 0;
+    padding: 0;
+}
+
+.total {
+    border-top: 1px solid #aeaeae !important;
+    font-size: 1.25rem;
+    font-weight: 800;
 }

@@ -23,13 +23,14 @@ const user = {
     address: 'Macabebe, Pampanga'
 };
 const account = {
-    bpi: {title: 'BPI', accountName: 'Meri Mocalyn Cruz', accountNumber: '1899 7768 83'},
-    bdo: {title: 'BDO', accountName: user.name, accountNumber: '0013 1124 6388'},
-    gcash: {title: 'GCash', accountName: user.name, phoneNumber: user.phone},
-    lbc: {title: 'LBC', accountName: user.name, phoneNumber: user.phone, address: user.address},
-    cebuana: {title: 'Cebuana Lhuillier', accountName: user.name, phoneNumber: user.phone, address: user.address},
-    palawan: {title: 'Palawan Express', accountName: user.name, phoneNumber: user.phone, address: user.address}
+    bpi: {title: 'BPI', accountName: 'Meri Mocalyn Cruz', accountNumber: '1899 7768 83', accountAddress: ''},
+    bdo: {title: 'BDO', accountName: user.name, accountNumber: '0013 1124 6388', accountAddress: ''},
+    gcash: {title: 'GCash', accountName: user.name, accountNumber: user.phone, accountAddress: ''},
+    lbc: {title: 'LBC', accountName: user.name, accountNumber: user.phone, accountAddress: user.address},
+    cebuana: {title: 'Cebuana Lhuillier', accountName: user.name, accountNumber: user.phone, accountAddress: user.address},
+    palawan: {title: 'Palawan Express', accountName: user.name, accountNumber: user.phone, accountAddress: user.address}
 };
+let header = document.getElementById('header');
 let totalAmountLabel = document.getElementById('totalAmountLabel');
 let totalAmountTxt = document.getElementById('totalAmountTxt');
 let invoiceImg = document.getElementById('invoiceImg');
@@ -78,9 +79,11 @@ showTab = (n) => {
     }
 
     if (n === (tab.length - 1)) {
-        nextBtn.innerHTML = 'Submit';
+        header.style.display = 'none';
+        nextBtn.innerHTML = 'Download PDF';
         populateInvoiceDetails();
     } else {
+        header.style.display = 'inline';
         nextBtn.innerHTML = 'Next';
     }
 }
@@ -158,7 +161,7 @@ addItem = () => {
         updateTotalAmount(itemAmountTxt.value);
         cell1.innerHTML = itemDescTxt.value;
         cell2.innerHTML = '₱' + itemAmountTxt.value;
-        row.className = 'row test';
+        row.className = 'row';
         cell1.className = 'col-8';
         cell2.className = 'col-4 text-right';
         item.description = itemDescTxt.value;
@@ -183,19 +186,75 @@ updateTotalAmount = (n) => {
 }
 
 populateInvoiceDetails = () => {
-    let itemTable = '<table>';
+    let currentDate = new Date();
+    let formattedDate = ("0" + (currentDate.getMonth() + 1)).slice(-2) + '-'
+        + ("0" + currentDate.getDate()).slice(-2) + '-'
+        + currentDate.getFullYear();
+    // document.getElementById('date').innerHTML = formattedDate;
+    
+    let itemTable = '<table class="table">';
     for (let i = 0; i < customer.items.length; i++) {
         let item = customer.items[i];
         
-        itemTable += '<tr>';
-        itemTable += '<td>' + item.description + '</td>';
-        itemTable += '<td>' + item.amount + '</td>';
+        itemTable += '<tr class="row align-items-center">';
+
+        if (item.description.toLowerCase().includes('top') ||
+            item.description.toLowerCase().includes('long sleeve')) {
+            if (item.description.toLowerCase().includes('tank')) {
+                itemTable += '<td class="col-2"><img src="images/tank.png" alt="Item"></td>';
+            } else {
+                itemTable += '<td class="col-2"><img src="images/top.png" alt="Item"></td>';
+            }
+        } else if (item.description.toLowerCase().includes('sweater') ||
+            item.description.toLowerCase().includes('sweatshirt') ||
+            item.description.toLowerCase().includes('sweat') ||
+            item.description.toLowerCase().includes('pullover')) {
+            itemTable += '<td class="col-2"><img src="images/sweater.png" alt="Item"></td>';
+        } else if (item.description.toLowerCase().includes('jacket') ||
+            item.description.toLowerCase().includes('hoodie')) {
+            itemTable += '<td class="col-2"><img src="images/hoodie.png" alt="Item"></td>';
+        } else if (item.description.toLowerCase().includes('blazer') ||
+            item.description.toLowerCase().includes('cardigan')) {
+            itemTable += '<td class="col-2"><img src="images/blazer.png" alt="Item"></td>';
+        } else if (item.description.toLowerCase().includes('bottom') ||
+            item.description.toLowerCase().includes('pants') ||
+            item.description.toLowerCase().includes('jean') ||
+            item.description.toLowerCase().includes('jeans') ||
+            item.description.toLowerCase().includes('denim') ||
+            item.description.toLowerCase().includes('corduroy')) {
+            itemTable += '<td class="col-2"><img src="images/bottom.png" alt="Item"></td>';
+        } else if (item.description.toLowerCase().includes('short') ||
+            item.description.toLowerCase().includes('shorts')) {
+            itemTable += '<td class="col-2"><img src="images/shorts.png" alt="Item"></td>';
+        } else if (item.description.toLowerCase().includes('dress')) {
+            itemTable += '<td class="col-2"><img src="images/dress.png" alt="Item"></td>';
+        } else if (item.description.toLowerCase().includes('skirt')) {
+            itemTable += '<td class="col-2"><img src="images/skirt.png" alt="Item"></td>';
+        } else {
+            itemTable += '<td class="col-2"><img src="images/top.png" alt="Item"></td>';
+        }
+
+        itemTable += '<td class="col-8">' + item.description + '</td>';
+        itemTable += '<td class="col-2 text-right">₱' + item.amount + '</td>';
         itemTable += '</tr>';
     }
+    itemTable += '<tr class="row align-items-center">';
+    itemTable += '<td class="col-2"><img src="images/truck.png" alt="Truck"></td>';
+    itemTable += '<td class="col-8">Shipping</td>';
+    itemTable += '<td class="col-2 text-right">₱' + customer.shippingFee + '</td>';
+    itemTable += '</tr>';
+    itemTable += '<hr>';
+    itemTable += '<tr class="row align-items-center">';
+    itemTable += '<td class="col-9 text-right total">Total</td>';
+    itemTable += '<td class="col-3 text-right total">₱' + customer.totalAmount + '</td>';
+    itemTable += '</tr>';
     itemTable += '</table>';
-
-    document.getElementById('customerDetails').innerHTML = customer.name + ' ' + customer.address;
+    
+    document.getElementById('customerName').innerHTML = customer.name;
+    document.getElementById('customerAddress').innerHTML = customer.address;
     document.getElementById('itemDetails').innerHTML = itemTable;
-    document.getElementById('shippingDetails').innerHTML = customer.shippingFee;
-    document.getElementById('paymentDetails').innerHTML = customer.paymentDetails.title;
+    document.getElementById('title').innerHTML = customer.paymentDetails.title;
+    document.getElementById('accountName').innerHTML = customer.paymentDetails.accountName;
+    document.getElementById('accountNumber').innerHTML = customer.paymentDetails.accountNumber;
+    document.getElementById('accountAddress').innerHTML = customer.paymentDetails.accountAddress;
 }
