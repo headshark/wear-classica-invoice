@@ -31,12 +31,14 @@ const account = {
     palawan: {title: 'Palawan Express', accountName: user.name, accountNumber: user.phone, accountAddress: user.address}
 };
 let header = document.getElementById('header');
+let logo = document.getElementById('logo');
 let totalAmountLabel = document.getElementById('totalAmountLabel');
 let totalAmountTxt = document.getElementById('totalAmountTxt');
 let invoiceImg = document.getElementById('invoiceImg');
 let prevBtn = document.getElementById('prevBtn');
 let nextBtn = document.getElementById('nextBtn');
 let addItemBtn = document.getElementById('addItemBtn');
+let itemTable = document.getElementById('itemTable');
 let shippingFeeTxt = document.getElementById('shippingFeeTxt');
 let paymentMethodTxt = document.getElementById('paymentMethodTxt');
 let tab = document.querySelectorAll('.tab');
@@ -46,6 +48,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     showTab(currentTab);
     customer.totalAmount = 0;
     totalAmountTxt.style.display = 'none';
+});
+logo.addEventListener('click', () => {
+    if (nextBtn.style.display === 'none') {
+        nextBtn.style.display = 'inline';
+    } else {
+        nextBtn.style.display = 'none';
+    }
 });
 nextBtn.addEventListener('click', () => {
     nextPrev(1);
@@ -79,8 +88,9 @@ showTab = (n) => {
     }
 
     if (n === (tab.length - 1)) {
+        nextBtn.innerHTML = 'New Invoice';
+        nextBtn.style.display = 'none';
         header.style.display = 'none';
-        nextBtn.innerHTML = 'Download PDF';
         populateInvoiceDetails();
     } else {
         header.style.display = 'inline';
@@ -94,6 +104,11 @@ nextPrev = (n) => {
     tab[currentTab].style.display = "none";
     currentTab = currentTab + n;
     console.log(customer);
+
+    if (currentTab >= tab.length) {
+        resetForm();
+        return false;
+    }
 
     showTab(currentTab);
 }
@@ -149,7 +164,6 @@ validateForm = () => {
 
 addItem = () => {
     let item = {};
-    let itemTable = document.getElementById('itemTable');
     let itemDescTxt = document.getElementById('itemDescTxt');
     let itemAmountTxt = document.getElementById('itemAmountTxt');
 
@@ -191,7 +205,7 @@ populateInvoiceDetails = () => {
         + ("0" + currentDate.getDate()).slice(-2) + '-'
         + currentDate.getFullYear();
     // document.getElementById('date').innerHTML = formattedDate;
-    
+
     let itemTable = '<table class="table">';
     for (let i = 0; i < customer.items.length; i++) {
         let item = customer.items[i];
@@ -257,4 +271,18 @@ populateInvoiceDetails = () => {
     document.getElementById('accountName').innerHTML = customer.paymentDetails.accountName;
     document.getElementById('accountNumber').innerHTML = customer.paymentDetails.accountNumber;
     document.getElementById('accountAddress').innerHTML = customer.paymentDetails.accountAddress;
+}
+
+resetForm = () => {
+    document.getElementById('form').reset();
+    currentTab = 0;
+    items = [];
+    customer = [];
+    customer.totalAmount = 0;
+    
+    showTab(currentTab);
+    itemTable.innerHTML = '';
+    totalAmountLabel.innerHTML = 'Invoice';
+    totalAmountTxt.style.display = 'none';
+    invoiceImg.style.display = 'inline';
 }
