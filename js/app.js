@@ -355,10 +355,7 @@ updateFeeAndTotal = (n) => {
 
 populateInvoiceDetails = () => {
     let currentDate = new Date();
-    let formattedDate = ("0" + (currentDate.getMonth() + 1)).slice(-2) + '-'
-        + ("0" + currentDate.getDate()).slice(-2) + '-'
-        + currentDate.getFullYear();
-    // document.getElementById('date').innerHTML = formattedDate;
+    let dueDate = new Date(new Date().getTime() + (2*24*60*60*1000));
 
     let itemTable = '<table class="table">';
     for (let i = 0; i < customer.items.length; i++) {
@@ -428,6 +425,18 @@ populateInvoiceDetails = () => {
     document.getElementById('accountName').innerHTML = customer.paymentDetails.accountName;
     document.getElementById('accountNumber').innerHTML = customer.paymentDetails.accountNumber;
     document.getElementById('accountAddress').innerHTML = customer.paymentDetails.accountAddress;
+    
+    document.getElementById('invoiceDate').innerHTML = formatDate(currentDate);
+    document.getElementById('shipFromTo').innerHTML = 'From Pampanga to ' + customer.address;
+    document.getElementById('dueDate').innerHTML = 'Due Date: ' + formatDate(dueDate);
+}
+
+formatDate = (date) => {
+    date = ("0" + (date.getMonth() + 1)).slice(-2) + '/'
+        + ("0" + date.getDate()).slice(-2) + '/'
+        + date.getFullYear();
+
+    return date;
 }
 
 resetForm = () => {
