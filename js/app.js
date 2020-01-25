@@ -1,5 +1,5 @@
 let currentTab = 0;
-let customer = [];
+let customer = {};
 let items = [];
 const provinces = [
     'Abra', 'Agusan del Norte', 'Aklan', 'Albay', 'Antique', 'Apayao', 'Aurora',
@@ -66,13 +66,18 @@ addItemBtn.addEventListener('click', () => {
     addItem();
 });
 shippingFeeTxt.addEventListener('change', () => {
-    if (customer.shippingFee) {
-        if (shippingFeeTxt.value !== customer.shippingFee) {
-            updateTotalAmount(-customer.shippingFee);
+    if (shippingFeeTxt.value !== '') {
+        if (customer.shippingFee) {
+            if (shippingFeeTxt.value !== customer.shippingFee) {
+                updateTotalAmount(-customer.shippingFee);
+            }
         }
+        updateTotalAmount(shippingFeeTxt.value);
+        customer.shippingFee = shippingFeeTxt.value;
+    } else {
+        updateTotalAmount(-customer.shippingFee);
+        customer.shippingFee = 0;
     }
-    updateTotalAmount(shippingFeeTxt.value);
-    customer.shippingFee = shippingFeeTxt.value;
 });
 
 populateProvinceDatalist = () => {
@@ -233,10 +238,13 @@ populateInvoiceDetails = () => {
             item.description.toLowerCase().includes('hoodie')) {
             itemTable += '<td class="col-2"><img src="images/hoodie.png" alt="Item"></td>';
         } else if (item.description.toLowerCase().includes('blazer') ||
+            item.description.toLowerCase().includes('coat') ||
             item.description.toLowerCase().includes('cardigan')) {
             itemTable += '<td class="col-2"><img src="images/blazer.png" alt="Item"></td>';
         } else if (item.description.toLowerCase().includes('bottom') ||
             item.description.toLowerCase().includes('pants') ||
+            item.description.toLowerCase().includes('trouser') ||
+            item.description.toLowerCase().includes('trousers') ||
             item.description.toLowerCase().includes('jean') ||
             item.description.toLowerCase().includes('jeans') ||
             item.description.toLowerCase().includes('denim') ||
@@ -247,7 +255,8 @@ populateInvoiceDetails = () => {
             itemTable += '<td class="col-2"><img src="images/shorts.png" alt="Item"></td>';
         } else if (item.description.toLowerCase().includes('dress')) {
             itemTable += '<td class="col-2"><img src="images/dress.png" alt="Item"></td>';
-        } else if (item.description.toLowerCase().includes('skirt')) {
+        } else if (item.description.toLowerCase().includes('skirt') ||
+            item.description.toLowerCase().includes('skirt')) {
             itemTable += '<td class="col-2"><img src="images/skirt.png" alt="Item"></td>';
         } else {
             itemTable += '<td class="col-2"><img src="images/top.png" alt="Item"></td>';
