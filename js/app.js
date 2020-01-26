@@ -489,7 +489,9 @@ document.getElementById('canvas').addEventListener('touchend', evt => {
 
 		// Right to left swipe
 		if (endX < startX - offset ) {
-            nextPrev(1);
+            if (currentTab < 3) {
+                nextPrev(1);
+            }
 		}
 	}
 });
