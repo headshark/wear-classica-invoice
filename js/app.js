@@ -230,6 +230,7 @@ nextPrev = (n) => {
     }
 
     if (currentTab >= tab.length) {
+        console.log('test');
         resetForm();
         return false;
     }
@@ -247,7 +248,7 @@ validateForm = () => {
 
             if (input.value === '' && input.className.includes('required')) {
                 // input.className += ' invalid';
-                alert(input.name + ' is a required field.');
+                alert(input.title + ' is a required field.');
                 valid = false;
                 return;
             } else {
@@ -266,20 +267,20 @@ validateForm = () => {
         }
 
         if (!valid) {
-            alert('invalid address.');
+            alert('Invalid address.');
         }
     }
 
     if (currentTab === 1) {
         if (items.length === 0) {
-            alert('please add an item.');
+            alert('Please add an item.');
             valid = false;
         }
     }
 
     if (currentTab === 2) {
         if (shippingFeeTxt.value === '' && shippingFeeTxt.className.includes('required')) {
-            alert(shippingFeeTxt.name + ' is a required field.');
+            alert(shippingFeeTxt.title + ' is a required field.');
             valid = false;
             return;
         } else {
@@ -287,7 +288,7 @@ validateForm = () => {
         }
 
         if (paymentMethodTxt.value === '' && paymentMethodTxt.className.includes('required')) {
-            alert(paymentMethodTxt.name + ' is a required field.');
+            alert(paymentMethodTxt.title + ' is a required field.');
             valid = false;
         } else {
             for (let [key, value] of Object.entries(account)) {
@@ -326,7 +327,7 @@ addItem = () => {
         itemDescTxt.value = '';
         itemAmountTxt.value = '';
     } else {
-        alert('please enter the item description and amount.');
+        alert('Please enter the item description and amount.');
     }
 }
 
@@ -453,3 +454,41 @@ resetForm = () => {
     totalAmountTxt.style.display = 'none';
     invoiceImg.style.display = 'inline';
 }
+
+/**
+ * @description Swipe player controls for mobile from http://stackoverflow.com/a/2450976
+ * @type {event}
+ */
+let startX = null, startY = null;
+document.getElementById('canvas').addEventListener('touchstart', evt => {
+	if (evt.touches.length === 1) {
+		// Just one finger touched
+		startX = evt.touches.item(0).clientX;
+		startY = evt.touches.item(0).clientY;
+	} else {
+		// If a second finger hit the screen, abort the touch
+		start = null;
+		startY = null;
+	}
+});
+
+document.getElementById('canvas').addEventListener('touchend', evt => {
+	let offset = 100; // At least 100px are a swipe
+
+	if (startX || startY) {
+		let endX = evt.changedTouches.item(0).clientX;
+		let endY = evt.changedTouches.item(0).clientY;
+
+		// Left to right swipe
+		if (endX > startX + offset) {
+            if (currentTab > 0) {
+                nextPrev(-1);
+            }
+		}
+
+		// Right to left swipe
+		if (endX < startX - offset ) {
+            nextPrev(1);
+		}
+	}
+});

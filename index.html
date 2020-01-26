@@ -21,11 +21,11 @@
 
 	<title>Invoice Generator</title>
 </head>
-<body>
+<body id="canvas">
 	<header id="header">
 		<div class="jumbotron jumbotron-fluid text-center">
 			<div class="container">
-				<button type="button" id="prevBtn" class="btn btn-outline-dark btn-lg fixed-top"><i class="fas fa-chevron-left"></i></button>
+				<button type="button" id="prevBtn" class="btn btn-outline-dark btn-lg fixed-top d-none"><i class="fas fa-chevron-left"></i></button>
 				<h5 id="totalAmountLabel" class="mb-0">Invoice</h5>
 				<h1 id="totalAmountTxt" class="font-weight-bold">0</h1>
 				<img src="images/invoice-icon-brown.png" alt="Invoice Icon" id="invoiceImg">
@@ -49,7 +49,7 @@
 					<div class="col-12">
 						<div class="form-group">
 							<div class="input-group input-group-lg">
-								<input type="text" id="nameTxt" name="name" class="form-control required" placeholder="Name">
+								<input type="text" id="nameTxt" name="name" title="Name" class="form-control required" placeholder="Name">
 							</div>
 						</div>
 					</div>
@@ -58,7 +58,7 @@
 					<div class="col-12">
 						<div class="form-group">
 							<div class="input-group input-group-lg">
-								<input type="text" id="addressTxt" name="address" class="form-control required" placeholder="Address" list="provinceDatalist">
+								<input type="text" id="addressTxt" name="address" title="Address" class="form-control required" placeholder="Address" list="provinceDatalist">
 							</div>
 						</div>
 					</div>
@@ -82,7 +82,7 @@
 					<div class="col-8">
 						<div class="form-group">
 							<div class="input-group">
-								<input type="text" id="itemDescTxt" name="itemDesc" class="form-control" placeholder="Description">
+								<input type="text" id="itemDescTxt" name="itemDesc" title="Item Description" class="form-control" placeholder="Description">
 							</div>
 						</div>
 					</div>
@@ -92,7 +92,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">₱</span>
 								</div>
-								<input type="number" id="itemAmountTxt" name="itemAmount" class="form-control text-right" min="0" max="999999">
+								<input type="number" id="itemAmountTxt" name="itemAmount" ="Item Amount" class="form-control text-right" min="0" max="999999">
 							</div>
 						</div>
 					</div>
@@ -180,7 +180,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">₱</span>
 								</div>
-								<input type="number" id="shippingFeeTxt" name="shippingFee" class="form-control text-right required" min="0" max="999999" disabled>
+								<input type="number" id="shippingFeeTxt" name="shippingFee" title="Shipping Fee" class="form-control text-right required" min="0" max="999999" disabled>
 							</div>
 						</div>
 					</div>
@@ -199,7 +199,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="far fa-credit-card"></i></span>
 								</div>
-								<select class="custom-select required" id="paymentMethodTxt" name="paymentMethod">
+								<select class="custom-select required" id="paymentMethodTxt" name="paymentMethod" title="Payment Method">
 									<option value=""></option>
 									<option value="bpi">BPI</option>
 									<option value="bdo">BDO</option>
@@ -266,7 +266,7 @@
 			</div>
 
 			<!-- Buttons -->
-			<div class="container-fluid fixed-bottom">
+			<div class="align-bottom d-none">
 				<button type="button" id="nextBtn" class="btn btn-block btn-dark">Next</button>
 			</div>
 		</div>
