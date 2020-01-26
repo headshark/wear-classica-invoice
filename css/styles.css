@@ -26,20 +26,39 @@ p {
     margin: 0;
 }
 
-.btn-dark {
-    background-color: #694934;
-    color: #fbf7e4;
-}
-
-.btn-outline-dark {
-    border-color: transparent;
-    color: #694934;
-}
-
 .btn-light {
     background-color: #e9ecef;
     border-color: transparent;
     color: #fff;
+}
+
+.btn-next {
+    background-color: #694934;
+    color: #fbf7e4;
+}
+
+.btn-next:active, .btn-next:focus, .btn-next:hover {
+    background-color: #a38270;
+    color: #fbf7e4;
+}
+
+.btn-prev {
+    background-color: transparent;
+    color: #694934;
+}
+
+.btn-prev:active, .btn-prev:focus, .btn-prev:hover {
+    color: #a38270;
+}
+
+.btn-add {
+    background-color: #e9ecef;
+    color: #fff;
+}
+
+.btn-add:active, .btn-add:focus, .btn-add:hover {
+    background-color: #e2e6ea;
+    color: #a38270;
 }
 
 .fixed-top {
