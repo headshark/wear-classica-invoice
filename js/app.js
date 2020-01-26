@@ -427,7 +427,7 @@ populateInvoiceDetails = () => {
     document.getElementById('accountAddress').innerHTML = customer.paymentDetails.accountAddress;
     
     document.getElementById('invoiceDate').innerHTML = formatDate(currentDate);
-    document.getElementById('shipFromTo').innerHTML = 'From Pampanga to ' + customer.address;
+    document.getElementById('shipFromTo').innerHTML = 'From <strong>Pampanga</strong> to <strong>' + customer.address + '</strong>';
     document.getElementById('dueDate').innerHTML = 'Due Date: ' + formatDate(dueDate);
 }
 
