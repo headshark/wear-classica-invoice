@@ -107,7 +107,6 @@ let prevBtn = document.getElementById('prevBtn');
 let nextBtn = document.getElementById('nextBtn');
 let addItemBtn = document.getElementById('addItemBtn');
 let itemTable = document.getElementById('itemTable');
-let addressTxt = document.getElementById('addressTxt');
 let shippingFeeTxt = document.getElementById('shippingFeeTxt');
 let paymentMethodTxt = document.getElementById('paymentMethodTxt');
 let tab = document.querySelectorAll('.tab');
@@ -138,22 +137,14 @@ addItemBtn.addEventListener('click', () => {
 shippingFeeTxt.addEventListener('change', () => {
     updateFeeAndTotal(shippingFeeTxt.value);
 });
-addressTxt.addEventListener('change', () => {
-    document.getElementById('shipTo').innerHTML = addressTxt.value;
-    for (let [key, value] of Object.entries(shippingRate)) {
-        if (addressTxt.value.toLowerCase() === key.toLowerCase() ||
-            addressTxt.value.toLowerCase().includes(key.toLowerCase())) {
-            
-            shippingFeeTxt.value = value.expressLetter;
-        }
-    }
-});
 
+let shippingType = 'expressLetter';
 let rates = document.getElementsByName('rate');
 for (let i = 0; i < rates.length; i++) {
     rates[i].addEventListener('change', (e) => {
         let id = rates[i].id;
         let rate;
+        shippingType = id;
 
         for (let [key, value] of Object.entries(shippingRate)) {
             if (customer.address.toLowerCase() === key.toLowerCase() ||
@@ -177,6 +168,7 @@ for (let i = 0; i < rates.length; i++) {
 
                 shippingFeeTxt.value = rate;
                 updateFeeAndTotal(rate);
+                break;
             }
         }
     });
@@ -215,7 +207,6 @@ showTab = (n) => {
     }
 }
 
-let updated = false;
 nextPrev = (n) => {
     if (n == 1 && !validateForm()) return false;
 
@@ -223,13 +214,37 @@ nextPrev = (n) => {
     currentTab = currentTab + n;
     console.log(customer);
 
-    if (currentTab === 2 && !updated) {
-        updateFeeAndTotal(shippingFeeTxt.value);
-        updated = true;
+    if (currentTab === 2) {
+        // update shipping rate
+        document.getElementById('shipTo').innerHTML = addressTxt.value; // update ship to label
+        for (let [key, value] of Object.entries(shippingRate)) {
+            if (customer.address.toLowerCase() === key.toLowerCase() ||
+                customer.address.toLowerCase().includes(key.toLowerCase())) {
+                
+                if (shippingType === 'expressLetter') {
+                    rate = value.expressLetter;
+                    shippingFeeTxt.disabled = true;
+                } else if (shippingType === 'onePounder') {
+                    rate = value.onePounder;   
+                    shippingFeeTxt.disabled = true;
+                } else if (shippingType === 'threePounder') {
+                    rate = value.threePounder;
+                    shippingFeeTxt.disabled = true;
+                } else {
+                    // if custom shipping rate
+                    rate = '';
+                    shippingFeeTxt.disabled = false;
+                    shippingFeeTxt.focus();
+                }
+
+                shippingFeeTxt.value = rate;
+                updateFeeAndTotal(rate);
+                break;
+            }
+        }
     }
 
     if (currentTab >= tab.length) {
-        console.log('test');
         resetForm();
         return false;
     }
