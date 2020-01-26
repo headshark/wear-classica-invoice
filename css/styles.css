@@ -26,12 +26,13 @@ p {
 }
 
 .btn-dark {
-    background-color: #333;
+    background-color: #694934;
+    color: #fbf7e4;
 }
 
 .btn-outline-dark {
     border-color: transparent;
-    color: #333;
+    color: #694934;
 }
 
 .btn-light {
