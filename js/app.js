@@ -453,6 +453,7 @@ resetForm = () => {
     totalAmountLabel.innerHTML = 'Invoice';
     totalAmountTxt.style.display = 'none';
     invoiceImg.style.display = 'inline';
+    shippingFeeTxt.disabled = true;
 }
 
 /**
