@@ -130,15 +130,14 @@ nextBtn.addEventListener('click', () => {
 });
 prevBtn.addEventListener('click', () => {
     nextPrev(-1);
+    nextBtn.style.display = 'inline';
 });
 addItemBtn.addEventListener('click', () => {
     addItem();
 });
 shippingFeeTxt.addEventListener('change', () => {
-    console.log('test');
     updateFeeAndTotal(shippingFeeTxt.value);
 });
-
 addressTxt.addEventListener('change', () => {
     document.getElementById('shipTo').innerHTML = addressTxt.value;
     for (let [key, value] of Object.entries(shippingRate)) {
@@ -485,6 +484,7 @@ document.getElementById('canvas').addEventListener('touchend', evt => {
 		if (endX > startX + offset) {
             if (currentTab > 0) {
                 nextPrev(-1);
+                nextBtn.style.display = 'inline';
             }
 		}
 
