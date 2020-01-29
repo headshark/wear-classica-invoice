@@ -397,7 +397,9 @@ populateInvoiceDetails = () => {
             itemTable += '<td class="col-2"><img src="images/denim-jacket.png" alt="Item"></td>';
         } else if (item.description.toLowerCase().includes('blazer') ||
             item.description.toLowerCase().includes('coat') ||
-            item.description.toLowerCase().includes('cardigan')) {
+            item.description.toLowerCase().includes('cardigan') ||
+            item.description.toLowerCase().includes('outerwear') ||
+            item.description.toLowerCase().includes('outer wear')) {
             itemTable += '<td class="col-2"><img src="images/blazer.png" alt="Item"></td>';
         } else if (item.description.toLowerCase().includes('short') ||
             item.description.toLowerCase().includes('shorts')) {
