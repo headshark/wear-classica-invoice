@@ -464,6 +464,7 @@ resetForm = () => {
     items = [];
     customer = [];
     customer.totalAmount = 0;
+    shippingType = 'expressLetter';
 
     showTab(currentTab);
     itemTable.innerHTML = '';
