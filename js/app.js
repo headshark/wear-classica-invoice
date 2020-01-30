@@ -375,50 +375,63 @@ populateInvoiceDetails = () => {
     let itemTable = '<table class="table">';
     for (let i = 0; i < customer.items.length; i++) {
         let item = customer.items[i];
+        let description = item.description.toLowerCase();
         
         itemTable += '<tr class="row align-items-center">';
 
-        if (item.description.toLowerCase().includes('top') ||
-            item.description.toLowerCase().includes('long sleeve')) {
-            if (item.description.toLowerCase().includes('tank')) {
-                itemTable += '<td class="col-2"><img src="images/tank.png" alt="Item"></td>';
+        if (description.includes('sleeve')) {
+            if (description.includes('short')) {
+                if (description.includes('top')) {
+                    itemTable += '<td class="col-2"><img src="images/short-sleeve.png" alt="Item"></td>';
+                } else {
+                    itemTable += '<td class="col-2"><img src="images/short-button-down.png" alt="Item"></td>';
+                }
+            } else if (description.includes('long')) {
+                if (description.includes('top')) {
+                    itemTable += '<td class="col-2"><img src="images/long-sleeve.png" alt="Item"></td>';
+                } else {
+                    itemTable += '<td class="col-2"><img src="images/long-button-down.png" alt="Item"></td>';
+                }
             } else {
-                itemTable += '<td class="col-2"><img src="images/top.png" alt="Item"></td>';
+                itemTable += '<td class="col-2"><img src="images/long-sleeve.png" alt="Item"></td>';
             }
-        } else if (item.description.toLowerCase().includes('sweat') ||
-            item.description.toLowerCase().includes('sweater') ||
-            item.description.toLowerCase().includes('sweatshirt') ||
-            item.description.toLowerCase().includes('pullover')) {
+        } else if (description.includes('tank') ||
+            description.includes('tank top')) {
+            itemTable += '<td class="col-2"><img src="images/tank.png" alt="Item"></td>';
+        } else if (description.includes('sweat') ||
+            description.includes('sweater') ||
+            description.includes('sweatshirt') ||
+            description.includes('pullover')) {
             itemTable += '<td class="col-2"><img src="images/sweater.png" alt="Item"></td>';
-        } else if (item.description.toLowerCase().includes('jacket') ||
-            item.description.toLowerCase().includes('hoodie')) {
+        } else if (description.includes('jacket') ||
+            description.includes('hoodie')) {
             itemTable += '<td class="col-2"><img src="images/hoodie.png" alt="Item"></td>';
-        } else if (item.description.toLowerCase().includes('denim jacket')) {
+        } else if (description.includes('denim jacket')) {
             itemTable += '<td class="col-2"><img src="images/denim-jacket.png" alt="Item"></td>';
-        } else if (item.description.toLowerCase().includes('blazer') ||
-            item.description.toLowerCase().includes('coat') ||
-            item.description.toLowerCase().includes('cardigan') ||
-            item.description.toLowerCase().includes('outerwear') ||
-            item.description.toLowerCase().includes('outer wear')) {
+        } else if (description.includes('blazer') ||
+            description.includes('coat') ||
+            description.includes('cardigan') ||
+            description.includes('outerwear') ||
+            description.includes('outer wear')) {
             itemTable += '<td class="col-2"><img src="images/blazer.png" alt="Item"></td>';
-        } else if (item.description.toLowerCase().includes('short') ||
-            item.description.toLowerCase().includes('shorts')) {
+        } else if (description.includes('short') ||
+            description.includes('shorts')) {
             itemTable += '<td class="col-2"><img src="images/shorts.png" alt="Item"></td>';
-        } else if (item.description.toLowerCase().includes('dress')) {
+        } else if (description.includes('dress')) {
             itemTable += '<td class="col-2"><img src="images/dress.png" alt="Item"></td>';
-        } else if (item.description.toLowerCase().includes('skirt')) {
+        } else if (description.includes('skirt')) {
             itemTable += '<td class="col-2"><img src="images/skirt.png" alt="Item"></td>';
-        }  else if (item.description.toLowerCase().includes('bottom') ||
-            item.description.toLowerCase().includes('pants') ||
-            item.description.toLowerCase().includes('trouser') ||
-            item.description.toLowerCase().includes('trousers') ||
-            item.description.toLowerCase().includes('jean') ||
-            item.description.toLowerCase().includes('jeans') ||
-            item.description.toLowerCase().includes('denim') ||
-            item.description.toLowerCase().includes('corduroy')) {
+        } else if (description.includes('bottom') ||
+            description.includes('pants') ||
+            description.includes('trouser') ||
+            description.includes('trousers') ||
+            description.includes('jean') ||
+            description.includes('jeans') ||
+            description.includes('denim') ||
+            description.includes('corduroy')) {
             itemTable += '<td class="col-2"><img src="images/bottom.png" alt="Item"></td>';
         } else {
-            itemTable += '<td class="col-2"><img src="images/top.png" alt="Item"></td>';
+            itemTable += '<td class="col-2"><img src="images/long-sleeve-.png" alt="Item"></td>';
         }
 
         itemTable += '<td class="col-8">' + item.description + '</td>';
