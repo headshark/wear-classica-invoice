@@ -329,7 +329,7 @@ addItem = () => {
         updateTotalAmount(itemAmountTxt.value);
         cell1.innerHTML = itemDescTxt.value;
         cell2.innerHTML = '₱' + itemAmountTxt.value;
-        row.className = 'row';
+        row.className = 'row item-row';
         cell1.className = 'col-8';
         cell2.className = 'col-4 text-right';
         item.description = itemDescTxt.value;
@@ -392,6 +392,8 @@ populateInvoiceDetails = () => {
                 } else {
                     itemTable += '<td class="col-2"><img src="images/long-button-down.png" alt="Item"></td>';
                 }
+            } else if (description.includes('less')) {
+                itemTable += '<td class="col-2"><img src="images/sleeveless-button-down.png" alt="Item"></td>';
             } else {
                 itemTable += '<td class="col-2"><img src="images/long-sleeve.png" alt="Item"></td>';
             }
@@ -486,44 +488,3 @@ resetForm = () => {
     invoiceImg.style.display = 'inline';
     shippingFeeTxt.disabled = true;
 }
-
-/**
- * @description Swipe player controls for mobile from http://stackoverflow.com/a/2450976
- * @type {event}
- */
-let startX = null, startY = null;
-document.getElementById('canvas').addEventListener('touchstart', evt => {
-	if (evt.touches.length === 1) {
-		// Just one finger touched
-		startX = evt.touches.item(0).clientX;
-		startY = evt.touches.item(0).clientY;
-	} else {
-		// If a second finger hit the screen, abort the touch
-		start = null;
-		startY = null;
-	}
-});
-
-document.getElementById('canvas').addEventListener('touchend', evt => {
-	let offset = 100; // At least 100px are a swipe
-
-	if (startX || startY) {
-		let endX = evt.changedTouches.item(0).clientX;
-		let endY = evt.changedTouches.item(0).clientY;
-
-		// Left to right swipe
-		if (endX > startX + offset) {
-            if (currentTab > 0) {
-                nextPrev(-1);
-                nextBtn.style.display = 'inline';
-            }
-		}
-
-		// Right to left swipe
-		if (endX < startX - offset ) {
-            if (currentTab < 3) {
-                nextPrev(1);
-            }
-		}
-	}
-});
