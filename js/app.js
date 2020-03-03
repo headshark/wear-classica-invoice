@@ -116,6 +116,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     showTab(currentTab);
     customer.totalAmount = 0;
     totalAmountTxt.style.display = 'none';
+
+    if(navigator.standalone == true) {
+        window.scrollTo(0,1);
+    }
 });
 logo.addEventListener('click', () => {
     if (nextBtn.style.display === 'none') {
