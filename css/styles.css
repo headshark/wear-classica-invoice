@@ -58,14 +58,14 @@ p {
 
 .btn-add {
   background-color: #fdfaf6;
-  color: #725648;
+  color: #b1885a;
 }
 
 .btn-add:active,
 .btn-add:focus,
 .btn-add:hover {
   background-color: #fff;
-  color: #725648;
+  color: #b1885a;
 }
 
 .fixed-top {
@@ -207,7 +207,7 @@ p {
 }
 
 .text-green {
-  color: #157564 !important;
+  color: #b1885a !important;
 }
 
 .bg-primary {
