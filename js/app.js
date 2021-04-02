@@ -569,9 +569,11 @@ populateInvoiceDetails = () => {
     '<td class="col-2 text-right">₱' + customer.shippingFee + '</td>';
   itemTable += '</tr>';
   itemTable += '<tr class="row align-items-center pt-0">';
-  itemTable += '<td class="col-9 text-right total">Total</td>';
+  itemTable += '<td class="col-9 text-right total text-green">Total</td>';
   itemTable +=
-    '<td class="col-3 text-right total">₱' + customer.totalAmount + '</td>';
+    '<td class="col-3 text-right total text-green">₱' +
+    customer.totalAmount +
+    '</td>';
   itemTable += '</tr>';
   itemTable += '</table>';
 
