@@ -11,7 +11,7 @@
 	<link rel="manifest" href="manifest.json">
 
 	<!-- Google Font -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -27,12 +27,12 @@
 <body>
 	<!-- Header -->
 	<header id="header">
-		<div class="jumbotron jumbotron-fluid text-center">
+		<div class="jumbotron jumbotron-fluid text-center bg-primary">
 			<div class="container">
 				<button type="button" id="prevBtn" class="btn btn-prev btn-lg fixed-top"><i class="fas fa-chevron-left"></i></button>
-				<h5 id="totalAmountLabel" class="mb-0">Invoice</h5>
-				<h1 id="totalAmountTxt" class="font-weight-bold">0</h1>
-				<img src="images/invoice-icon-brown.png" alt="Invoice Icon" id="invoiceImg">
+				<h5 id="totalAmountLabel" class="mb-0"></h5>
+				<h1 id="totalAmountTxt" class="font-weight-500">0</h1>
+				<img src="images/wear-classica-logo-new.png" alt="Invoice Icon" id="invoiceImg" class="logo rounded-circle">
 			</div>
 		</div>
 	</header>
@@ -45,7 +45,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group">
-							<h6>Bill To</h6>
+							<h6 class="text-brown">Bill To</h6>
 						</div>
 					</div>
 				</div>
@@ -74,7 +74,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group">
-							<h6>Items</h6>
+							<h6 class="text-brown">Items</h6>
 						</div>
 					</div>
 				</div>
@@ -117,8 +117,8 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group">
-							<span class="small">
-								From <strong>Pampanga</strong> to <strong><span id="shipTo">Ship To</span></strong>
+							<span class="text-brown">
+								From <strong class="text-green">Pampanga</strong> to <strong class="text-green"><span id="shipTo">Ship To</span></strong>
 							</span>
 						</div>
 					</div>
@@ -175,7 +175,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group">
-							<h6>Shipping Fee</h6>
+							<h6 class="text-brown">Shipping Fee</h6>
 						</div>
 					</div>
 				</div>
@@ -194,7 +194,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group">
-							<h6>Payment Method</h6>
+							<h6 class="text-brown">Payment Method</h6>
 						</div>
 					</div>
 				</div>
@@ -222,16 +222,16 @@
 
 			<!-- Invoice Details -->
 			<div class="tab">
-				<table class="table">
+				<table class="table mb-1">
 					<tr>
-						<th class="align-middle pl-0"><h3>Invoice</h3></th>
+						<th class="align-middle pl-0"><h2 class="invoice-header text-green">Invoice</h2></th>
 						<th class="align-middle pr-0 text-right"><img src="images/wear-classica-logo-new.png" alt="Wear Classica Logo" id="logo" class="logo rounded-circle"></th>
 					</tr>
 				</table>
 				
 				<div class="pb-4">
-					<p class="float-left">Bill To</p>
-					<p id="invoiceDate" class="float-right small">Invoice Date</p>
+					<p class="float-left title">Bill To</p>
+					<p id="invoiceDate" class="float-right small title">Invoice Date</p>
 				</div>
 				<div class="details">
 					<table class="table">
@@ -248,20 +248,20 @@
 				</div>
 
 				<div class="pb-4">
-					<p class="float-left">Items</p>
-					<p id="shipFromTo" class="float-right small">From To</p>
+					<p class="float-left title">Items</p>
+					<p id="shipFromTo" class="float-right small title">From To</p>
 				</div>
 				<div id="itemDetails" class="details"></div>
 
 				<div class="pb-4">
-					<p class="float-left">Payment Method</p>
-					<p id="dueDate" class="float-right small text-danger">From To</p>
+					<p class="float-left title">Payment Method</p>
+					<p id="dueDate" class="float-right small due-date">From To</p>
 				</div>
 				<div class="details">
 					<table class="table">
 						<tr class="row align-items-center">
 							<td class="col-12">
-								<div id="title" class="font-weight-bold">Account</div>
+								<div id="title" class="font-weight-500">Account</div>
 								<div id="accountName">Account Name</div>
 								<div id="accountNumber">Account Number</div>
 								<div id="accountAddress"></div>
@@ -269,7 +269,7 @@
 						</tr>
 					</table>
 				</div>
-			</div>
+				</div>
 
 			<!-- Buttons -->
 			<div class="align-bottom mt-5 mb-5">

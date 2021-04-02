@@ -1,172 +1,232 @@
-html, body {
-    background-color: #fff;
-    color: #333;
-    font-family: "Montserrat", sans-serif;
-    font-size: 10pt;
-    line-height: 1.5;
-    margin: 0;
-    height: 100%;
+html,
+body {
+  background-color: #fbf0ec;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10pt;
+  line-height: 1.5;
+  margin: 0;
+  height: 100%;
 }
 
 a {
-    color: #00a859;
+  color: #00a859;
 }
 
 a:hover {
-    color: #007a41;
+  color: #007a41;
 }
 
 p {
-    font-size: .75rem;
-    margin-bottom: .5rem;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .jumbotron {
-    background-color: #fff;
-    margin: 0;
+  background-color: #fff;
+  margin: 0;
 }
 
 .btn-light {
-    background-color: #e9ecef;
-    border-color: transparent;
-    color: #fff;
+  background-color: #e9ecef;
+  border-color: transparent;
+  color: #fff;
 }
 
 .btn-next {
-    background-color: #694934;
-    color: #fbf7e4;
+  background-color: #157564;
+  color: #fbf7e4;
 }
 
-.btn-next:active, .btn-next:focus, .btn-next:hover {
-    background-color: #a38270;
-    color: #fbf7e4;
+.btn-next:active,
+.btn-next:focus,
+.btn-next:hover {
+  background-color: #126d5e;
+  color: #fbf7e4;
 }
 
 .btn-prev {
-    background-color: transparent;
-    color: #694934;
+  background-color: transparent;
+  color: #157564;
 }
 
-.btn-prev:active, .btn-prev:focus, .btn-prev:hover {
-    color: #a38270;
+.btn-prev:active,
+.btn-prev:focus,
+.btn-prev:hover {
+  color: #126d5e;
 }
 
 .btn-add {
-    background-color: #e9ecef;
-    color: #fff;
+  background-color: #fdfaf6;
+  color: #725648;
 }
 
-.btn-add:active, .btn-add:focus, .btn-add:hover {
-    background-color: #e2e6ea;
-    color: #a38270;
+.btn-add:active,
+.btn-add:focus,
+.btn-add:hover {
+  background-color: #fff;
+  color: #725648;
 }
 
 .fixed-top {
-    top: 0;
-    left: 0;
-    position: absolute;
+  top: 0;
+  left: 0;
+  position: absolute;
 }
 
 .fixed-bottom {
-    bottom: 40px;
-    left: 0;
-    position: absolute;
+  bottom: 40px;
+  left: 0;
+  position: absolute;
 }
 
 .tab {
-    display: none;
+  display: none;
 }
 
 .table {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .item-table {
-    font-size: 1rem;
-    font-weight: 800;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .item-table tr {
-    border-radius: .25rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    margin: 0 0 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  margin: 0 0 1rem;
 }
 
 .item-table tr td {
-    border: 0;
-    padding: 1rem 1.25rem;
+  border: 0;
+  padding: 1rem 1.25rem;
 }
 
 .logo {
-    width: 100px;
+  width: 100px;
 }
 
 .details {
-    border-radius: .25rem;
-    box-shadow: 0 1px 15px rgba(0,0,0,0.1);
-    margin: 0 0 1rem;
+  background-color: #fdfaf6 !important;
+  border-radius: 15px;
+  margin: 0 0 1.125rem;
+  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .details img {
-    width: 32px;
+  width: 32px;
 }
 
 .details table tr {
-    border: 0;
-    padding: 1rem;
-    margin: 0;
+  border: 0;
+  padding: 1rem;
+  margin: 0;
 }
 
 .details table tr td {
-    border: 0;
-    padding: 0;
+  border: 0;
+  padding: 0;
 }
 
 .total {
-    border-top: 1px solid #aeaeae !important;
-    font-size: 1.25rem;
-    font-weight: 800;
-    padding-top: 0;
+  border-top: 1px solid #aeaeae !important;
+  font-size: 1.25rem;
+  font-weight: 800;
+  padding-top: 0;
 }
 
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio */
 /* The container */
 .radio-group {
-    display: inline;
-    position: relative;
-    padding-left: 30px;
-    cursor: pointer;
-    font-size: 1rem;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+  display: inline;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 /* Hide the browser's default radio button */
 .radio-group input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
-  
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
 /* Create a custom radio button */
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: #eee;
-    border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #fdfaf6;
+  border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
 .radio-group:hover input ~ .checkmark {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
 /* When the radio button is checked, add a background color */
 .radio-group input:checked ~ .checkmark {
-    background-color: #694934;
+  background-color: #157564;
+}
+
+.invoice-header {
+  font-weight: 700 !important;
+}
+
+.mb-1 {
+  margin-bottom: 1.125rem !important;
+}
+
+.title {
+  color: #725648;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.due-date {
+  color: #dc2626;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.text-brown {
+  color: #725648 !important;
+}
+
+.text-green {
+  color: #157564 !important;
+}
+
+.bg-primary {
+  background-color: #fbf0ec !important;
+}
+
+.bg-green {
+  background-color: #157564 !important;
+}
+
+.item-row {
+  background-color: #fdfaf6 !important;
+  border-radius: 15px !important;
+  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.font-weight-500 {
+  font-weight: 500 !important;
 }
