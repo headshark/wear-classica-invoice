@@ -145,8 +145,8 @@ const user = {
 const account = {
   bpi: {
     title: 'BPI',
-    accountName: 'Meri Mocalyn Cruz',
-    accountNumber: '1899 7768 83',
+    accountName: 'Soniella Therese Yumang',
+    accountNumber: '0759 4400 48',
     accountAddress: '',
   },
   bdo: {
